@@ -1,0 +1,135 @@
+rules_version = '2';
+
+// Regras da lista de presentes "Chá de casa nova Heitor e Ana".
+//
+// - status/{itemId}:  público (só diz se o item foi presenteado).
+// - compras/{itemId}: quem comprou, opção, forma, mensagem. Só o casal lê.
+// - mensagens/{id}:   mural e mensagens junto da marcação. Só o casal lê.
+// - pixinhos/{id}:    Pixinho solidário informado. Só o casal lê.
+//
+// Marcar um item = gravar status + compras do mesmo itemId numa única
+// gravação em lote (writeBatch). Desmarcar = apagar os dois juntos.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Conta única do casal, com login pelo Google e e-mail verificado.
+    function ehCasal() {
+      return request.auth != null
+        && request.auth.token.get('email', '') == 'heitor.tomazeli@gmail.com'
+        && request.auth.token.get('email_verified', false) == true
+        && request.auth.token.get('firebase', {}).get('sign_in_provider', '') == 'google.com';
+    }
+
+    function logado() {
+      return request.auth != null;
+    }
+
+    function idValido(id) {
+      return id is string && id.matches('^[a-z0-9-]{1,60}$');
+    }
+
+    function nomeValido(v) {
+      return v is string && v.trim().size() > 0 && v.size() <= 80;
+    }
+
+    function textoOpcional(v, max) {
+      return v is string && v.size() <= max;
+    }
+
+    function textoObrigatorio(v, max) {
+      return v is string && v.trim().size() > 0 && v.size() <= max;
+    }
+
+    function caminhoStatus(itemId) {
+      return /databases/$(database)/documents/status/$(itemId);
+    }
+
+    function caminhoCompra(itemId) {
+      return /databases/$(database)/documents/compras/$(itemId);
+    }
+
+    match /status/{itemId} {
+      allow read: if true;
+
+      // Só cria se ainda não existe: um item presenteado não pode ser
+      // marcado de novo (sobrescrever seria "update", que é proibido).
+      allow create: if logado()
+        && idValido(itemId)
+        && request.resource.data.keys().hasOnly(['presenteado', 'uidMarcador', 'criadoEm'])
+        && request.resource.data.presenteado == true
+        && request.resource.data.uidMarcador == request.auth.uid
+        && request.resource.data.criadoEm == request.time
+        && existsAfter(caminhoCompra(itemId))
+        && getAfter(caminhoCompra(itemId)).data.uidMarcador == request.auth.uid;
+
+      allow update: if false;
+
+      // Quem marcou (mesmo login anônimo = mesmo aparelho) ou o casal.
+      // A compra precisa ser apagada junto.
+      allow delete: if logado()
+        && (resource.data.uidMarcador == request.auth.uid || ehCasal())
+        && !existsAfter(caminhoCompra(itemId));
+    }
+
+    match /compras/{itemId} {
+      allow read: if ehCasal();
+
+      allow create: if logado()
+        && idValido(itemId)
+        && request.resource.data.keys().hasOnly(['nome', 'opcao', 'forma', 'mensagem', 'uidMarcador', 'criadoEm'])
+        && request.resource.data.keys().hasAll(['nome', 'opcao', 'forma', 'mensagem', 'uidMarcador', 'criadoEm'])
+        && nomeValido(request.resource.data.nome)
+        && (request.resource.data.opcao == null
+            || (request.resource.data.opcao is int
+                && request.resource.data.opcao >= 0
+                && request.resource.data.opcao <= 1))
+        && request.resource.data.forma in ['loja', 'pix']
+        && textoOpcional(request.resource.data.mensagem, 1000)
+        && request.resource.data.uidMarcador == request.auth.uid
+        && request.resource.data.criadoEm == request.time
+        && existsAfter(caminhoStatus(itemId))
+        && getAfter(caminhoStatus(itemId)).data.uidMarcador == request.auth.uid;
+
+      allow update: if false;
+
+      // O delete pode olhar o documento mesmo sem permissão de leitura.
+      allow delete: if logado()
+        && (resource.data.uidMarcador == request.auth.uid || ehCasal())
+        && !existsAfter(caminhoStatus(itemId));
+    }
+
+    match /mensagens/{mensagemId} {
+      allow read: if ehCasal();
+
+      allow create: if logado()
+        && request.resource.data.keys().hasOnly(['nome', 'texto', 'itemId', 'criadoEm'])
+        && request.resource.data.keys().hasAll(['nome', 'texto', 'itemId', 'criadoEm'])
+        && nomeValido(request.resource.data.nome)
+        && textoObrigatorio(request.resource.data.texto, 1000)
+        && (request.resource.data.itemId == null || idValido(request.resource.data.itemId))
+        && request.resource.data.criadoEm == request.time;
+
+      allow update: if false;
+      allow delete: if ehCasal();
+    }
+
+    match /pixinhos/{pixinhoId} {
+      allow read: if ehCasal();
+
+      allow create: if logado()
+        && request.resource.data.keys().hasOnly(['nome', 'mensagem', 'criadoEm'])
+        && request.resource.data.keys().hasAll(['nome', 'mensagem', 'criadoEm'])
+        && nomeValido(request.resource.data.nome)
+        && textoOpcional(request.resource.data.mensagem, 1000)
+        && request.resource.data.criadoEm == request.time;
+
+      allow update: if false;
+      allow delete: if ehCasal();
+    }
+
+    // Qualquer outro caminho: negado.
+    match /{caminho=**} {
+      allow read, write: if false;
+    }
+  }
+}

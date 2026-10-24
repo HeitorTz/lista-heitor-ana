@@ -1,0 +1,710 @@
+{
+  "observacao": "Transcrito do PDF modelo. 'precos' tem uma entrada por botão (mesma ordem de 'botoes'): valor em reais levantado em 23/10/2026, ou null quando a loja bloqueou a consulta. 'precoPix' só quando a loja mostra valor diferente no Pix. Na Shopee, 'precoPix' é o preço no Pix com cupom exibido na página; 'valor' é o preço sem cupom em outros meios.",
+  "secoes": [
+    {
+      "id": "casa-moveis",
+      "subtitulo": "Para montar o nosso cantinho",
+      "titulo": "Casa & Móveis",
+      "itens": [
+        {
+          "id": "guarda-roupa",
+          "nome": "Guarda-roupa",
+          "fotos": [
+            "assets/produtos/guarda-roupa.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Amazon",
+              "url": "https://a.co/d/08oKemnD"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 1117.96
+            }
+          ]
+        },
+        {
+          "id": "guarda-roupa-4-portas",
+          "nome": "Guarda-roupa 4 portas",
+          "fotos": [
+            "assets/produtos/guarda-roupa-4-portas.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Guarda-Roupa-Dit%C3%A1lia-4-Portas-DM-580-i.522316174.58210236622?xptdk=a14ed5a3-cd50-4468-b76f-c4acc0dce5fe"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 459.9,
+              "precoPix": 413.91
+            }
+          ],
+          "adicionadoEm": "2026-10-23"
+        },
+        {
+          "id": "comoda",
+          "nome": "Cômoda",
+          "fotos": [
+            "assets/produtos/comoda.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na MadeiraMadeira",
+              "url": "https://www.madeiramadeira.com.br/comoda-caribe-bege-cinamomo-off-white-980284.html"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 269.98
+            }
+          ]
+        },
+        {
+          "id": "box-bau",
+          "nome": "Box baú para cama",
+          "nota": "Shopee ou Casas Bahia · duas opções",
+          "fotos": [
+            "assets/produtos/box-bau.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Opção 1",
+              "url": "https://br.shp.ee/ZSrJ7sUq"
+            },
+            {
+              "rotulo": "Opção 2",
+              "url": "https://www.casasbahia.com.br/cama-box-bau-casal-suede-sereneprime-bege-138x188x44/p/1561679154"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 689.0,
+              "precoPix": 608.88
+            },
+            {
+              "valor": 484.9,
+              "precoPix": 446.11
+            }
+          ]
+        },
+        {
+          "id": "cabeceira",
+          "nome": "Cabeceira de cama",
+          "fotos": [
+            "assets/produtos/cabeceira.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/product/655304924/23893477407"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 262.99,
+              "precoPix": 236.7
+            }
+          ],
+          "variacao": "Bege"
+        },
+        {
+          "id": "sofa",
+          "nome": "Sofá",
+          "fotos": [
+            "assets/produtos/sofa.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Casas Bahia",
+              "url": "https://www.casasbahia.com.br/sofa-5-lugares-net-royale-assento-retratil-e-reclinavel-areia-250m-l/p/1545777694"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 1299.9
+            }
+          ]
+        },
+        {
+          "id": "mesa-cadeiras",
+          "nome": "Mesa com cadeiras",
+          "fotos": [
+            "assets/produtos/mesa-cadeiras.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/product/855489892/19799252497?d_id=74b20&uls_trackid=56uv7h0c000o&utm_content=3CEbq7xw66Dq1tFk2DLETjk7A6cw"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 769.02,
+              "precoPix": 682.5
+            }
+          ]
+        },
+        {
+          "id": "televisao",
+          "nome": "Televisão",
+          "fotos": [
+            "assets/produtos/televisao.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Fast Shop",
+              "url": "https://site.fastshop.com.br/smart-tv-samsung-50--mini-led-4k-m75h-2027-sgun50m75hpto_prd/p"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 2732.98,
+              "precoPix": 2569.0
+            }
+          ]
+        },
+        {
+          "id": "armario-cozinha",
+          "nome": "Armário de cozinha",
+          "fotos": [
+            "assets/produtos/armario-cozinha.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/product/872473112/23198895760?d_id=74b20&uls_trackid=56uv7hb300jl&utm_content=3CEbq7xw5Fbv9G8J4gw4999E6HrF"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 940.69,
+              "precoPix": 840.44
+            }
+          ]
+        },
+        {
+          "id": "filtro-agua",
+          "nome": "Filtro de água",
+          "nota": "Amazon · duas opções",
+          "fotos": [
+            "assets/produtos/filtro-agua.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Opção 1",
+              "url": "https://a.co/d/0iLm9mke"
+            },
+            {
+              "rotulo": "Opção 2",
+              "url": "https://a.co/d/0hX4YeMs"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 484.4
+            },
+            {
+              "valor": 483.92
+            }
+          ]
+        },
+        {
+          "id": "ventilador",
+          "nome": "Ventilador de coluna com controle",
+          "fotos": [
+            "assets/produtos/ventilador.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Amazon",
+              "url": "https://a.co/d/0ilvLFEi"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 238.99
+            }
+          ]
+        },
+        {
+          "id": "toalhas",
+          "nome": "Toalhas de banho e rosto",
+          "nota": "Modelo à sua escolha",
+          "fotos": [
+            "assets/produtos/toalhas-1.webp",
+            "assets/produtos/toalhas-2.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver no Mercado Livre",
+              "url": "https://www.mercadolivre.com.br/jogo-toalha-banhao-buddemeyer-vanilla-cor-escuro-e-rosa-claro-extra-soft-algodao-4pcs/p/MLB51339078?pdp_filters=item_id%3AMLB5847589316&matt_tool=38524122&ua=ylZk0T8bOdLCW7BP99LNHSU-1XYmQ0Wk1VYIZdxWE6UbLbrc#origin=whatsapp&sid=whatsapp&wid=MLB5847589316"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 218.35
+            }
+          ]
+        },
+        {
+          "id": "cabides",
+          "nome": "Kit 100 cabides de veludo",
+          "fotos": [
+            "assets/produtos/cabides.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/product/1269567763/23198917165?d_id=74b20&uls_trackid=56uv7g32002i&utm_content=3CEbq7xw7CdFP4rgbHwyB9N333AX"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 139.98,
+              "precoPix": 132.99
+            }
+          ],
+          "adicionadoEm": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "cozinha-mesa",
+      "subtitulo": "Para as receitas e os encontros",
+      "titulo": "Cozinha & Mesa",
+      "itens": [
+        {
+          "id": "aparelho-jantar",
+          "nome": "Aparelho de jantar 30 peças",
+          "fotos": [
+            "assets/produtos/aparelho-jantar-2.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver no Mercado Livre",
+              "url": "https://www.mercadolivre.com.br/p/MLB36943197?pdp_filters=item_id%3AMLB4007200463&sid=cart#polycard_client=cart_list&wid=MLB4007200463&sid=cart"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 424.9,
+              "precoPix": 403.65
+            }
+          ],
+          "alteradoDoPdf": "Opção única (Porto Brasil linha Roma) definida pelo casal em 23/10/2026; a opção Mendi Marfim Oxford foi removida."
+        },
+        {
+          "id": "faqueiro",
+          "nome": "Faqueiro inox",
+          "fotos": [
+            "assets/produtos/faqueiro.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver no Mercado Livre",
+              "url": "https://www.mercadolivre.com.br/kit-faqueiros-tramontina-buzios-48-pecas-aco-inox-12-pessoas/up/MLBU4715206353?pdp_filters=item_id%3AMLB5064857305"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 199.99
+            }
+          ]
+        },
+        {
+          "id": "jogo-panelas",
+          "nome": "Jogo de panelas",
+          "fotos": [
+            "assets/produtos/jogo-panelas.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Jogo-Panelas-Antiaderente-5-Pe%C3%A7as-Ca%C3%A7arola-Teflon-Antiaderente-com-Tampa-de-Vidro-i.379103154.9211748912"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 163.9,
+              "precoPix": 155.71
+            }
+          ]
+        },
+        {
+          "id": "frigideiras",
+          "nome": "Jogo de frigideiras",
+          "fotos": [
+            "assets/produtos/frigideiras.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/KIT-com-5-Frigideira-Antiaderente-N%C2%BA-16-18-20-22-24-i.1139260246.19799075762"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 109.9,
+              "precoPix": 104.41
+            }
+          ]
+        },
+        {
+          "id": "canecoes",
+          "nome": "Jogo de canecões",
+          "fotos": [
+            "assets/produtos/canecoes.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Jogo-3-Caneco-Leiteira-Fervedor-Canec%C3%A3o-Alum%C3%ADnio-Craqueado-Preto-Polido-i.1306185578.58258420632"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 54.33
+            }
+          ]
+        },
+        {
+          "id": "colheres-silicone",
+          "nome": "Jogo de colheres de silicone",
+          "fotos": [
+            "assets/produtos/colheres-silicone.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Kit-10-Pe%C3%A7as-Colheres-De-Silicone-Cabo-Inox-Utens%C3%ADlios-Cozinha-i.1278493331.23797584611"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 45.48
+            }
+          ]
+        },
+        {
+          "id": "utensilios",
+          "nome": "Kit utensílios de cozinha",
+          "fotos": [
+            "assets/produtos/utensilios.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Kit-Jogo-18-Talheres-Utens%C3%ADlios-De-A%C3%A7o-100-Inox-Original-Multiuso-Para-Sua-Cozinha-i.573641682.23793943478"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 129.99,
+              "precoPix": 123.5
+            }
+          ]
+        },
+        {
+          "id": "facas",
+          "nome": "Jogo de facas",
+          "fotos": [
+            "assets/produtos/facas.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Jogo-de-Facas-Tramontina-10-Pe%C3%A7as-A%C3%A7o-Inox-i.677675174.19676327520"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 117.9,
+              "precoPix": 112.01
+            }
+          ]
+        },
+        {
+          "id": "formas",
+          "nome": "Conjunto de formas",
+          "fotos": [
+            "assets/produtos/formas.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Kit-4-6-8-10-ou-12-Formas-Antiaderente-A%C3%A7o-Carbono-para-P%C3%A3o-Bolo-Pizza-Pudim-e-Torta-i.1329917481.58205123442"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 216.9,
+              "precoPix": 195.21
+            }
+          ],
+          "variacao": "Kit 12 Formas"
+        },
+        {
+          "id": "marinex",
+          "nome": "Conjunto de Marinex",
+          "fotos": [
+            "assets/produtos/marinex.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Conjunto-de-Assadeiras-em-Vidro-com-Tampa-6-Pe%C3%A7as-Marinex-i.1083800536.23794931696"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 129.9,
+              "precoPix": 123.41
+            }
+          ]
+        },
+        {
+          "id": "copos",
+          "nome": "Jogo de copos",
+          "fotos": [
+            "assets/produtos/copos.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Amazon",
+              "url": "https://a.co/d/0gwVGPUM"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 37.89
+            }
+          ]
+        },
+        {
+          "id": "sobremesa",
+          "nome": "Conjunto de sobremesa",
+          "nota": "Amazon · precisamos de apenas um",
+          "fotos": [
+            "assets/produtos/sobremesa-1.webp",
+            "assets/produtos/sobremesa-2.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Opção 1",
+              "url": "https://a.co/d/01wQM5eU"
+            },
+            {
+              "rotulo": "Opção 2",
+              "url": "https://a.co/d/02Ic4Bt8"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 95.75
+            },
+            {
+              "valor": 55.9
+            }
+          ]
+        },
+        {
+          "id": "potes-vidro",
+          "nome": "Kit 10 potes de vidro herméticos",
+          "fotos": [
+            "assets/produtos/potes-vidro.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/product/1505860882/41234837860?d_id=74b20&uls_trackid=56uv7go300kf&utm_content=3CEbq7xw7CwfHkhBXeXSVxXbPsJF"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 69.9
+            }
+          ],
+          "adicionadoEm": "2026-10-23"
+        }
+      ]
+    },
+    {
+      "id": "eletroportateis",
+      "subtitulo": "Praticidade para o dia a dia",
+      "titulo": "Eletroportáteis",
+      "itens": [
+        {
+          "id": "airfryer",
+          "nome": "Airfryer",
+          "fotos": [
+            "assets/produtos/airfryer.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Fritadeira-El%C3%A9trica-Sem-%C3%93leo-Air-Fryer-Oven-2-em-1-Mondial-AFON-12L-BI-12L-Digital-i.1083800536.58206311996"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 636.9,
+              "precoPix": 560.95
+            }
+          ]
+        },
+        {
+          "id": "sanduicheira",
+          "nome": "Sanduicheira elétrica 3 em 1",
+          "fotos": [
+            "assets/produtos/sanduicheira.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/3-Em-1-Port%C3%A1til-Sanduicheiras-Waffle-Donuts-Fast-Antiaderente-110V-220V-i.1242893927.58201100007"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 165.98,
+              "precoPix": 157.69
+            }
+          ]
+        },
+        {
+          "id": "panela-arroz",
+          "nome": "Panela de arroz elétrica",
+          "fotos": [
+            "assets/produtos/panela-arroz.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Panela-de-Arroz-El%C3%A9trica-Electrolux-por-Rita-Lobo-2L-Preta-Efficient-Visor-Glass-(ERC10)-i.1526836548.22693991394"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 209.9,
+              "precoPix": 188.91
+            }
+          ]
+        },
+        {
+          "id": "panela-pressao",
+          "nome": "Panela de pressão elétrica",
+          "fotos": [
+            "assets/produtos/panela-pressao.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Amazon",
+              "url": "https://www.amazon.com.br/dp/B084W9WW33"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 299.9
+            }
+          ]
+        },
+        {
+          "id": "multiprocessador",
+          "nome": "Multiprocessador 9 em 1",
+          "fotos": [
+            "assets/produtos/multiprocessador.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Amazon",
+              "url": "https://www.amazon.com.br/dp/B09NX12VCH"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 271.13
+            }
+          ]
+        },
+        {
+          "id": "mixer",
+          "nome": "Mixer 5 em 1",
+          "fotos": [
+            "assets/produtos/mixer.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver no Mercado Livre",
+              "url": "https://www.mercadolivre.com.br/mixer-master-mix-5-em-1-elgin-1000w-110v-5-funcoes-prateado/p/MLB67471802?matt_event_ts=1792800855218&matt_d2id=0518a337-e4ee-4ba7-b71e-8806340a9e62&matt_tracing_id=f56c81a1-c38b-4eaf-8c5f-071a903cad2c#polycard_client=recommendations_home_affiliate-profile&reco_backend=item_decorator&reco_client=home_affiliate-profile&matt_tool_id=60810254&reco_item_pos=0&source=affiliate-profile&reco_backend_type=function&reco_id=e6efffce-5b0b-407b-afb8-4c79681ab430&tracking_id=61cbc340-d099-4839-9ee2-355e78b9cf7f&c_id=/home/card-featured/element&c_uid=d940045b-306d-4bf4-a9fd-2fa978962ab4"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 231.42
+            }
+          ]
+        },
+        {
+          "id": "batedeira",
+          "nome": "Batedeira planetária",
+          "fotos": [
+            "assets/produtos/batedeira.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Amazon",
+              "url": "https://www.amazon.com.br/dp/B0DY8T1Q6Q"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 269.1
+            }
+          ]
+        },
+        {
+          "id": "cafeteira",
+          "nome": "Cafeteira elétrica",
+          "fotos": [
+            "assets/produtos/cafeteira.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Dolce Gusto",
+              "url": "https://www.nescafe-dolcegusto.com.br/maquinas-cafe/mini-me-2-preto-onyx-110v"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 419.9
+            }
+          ]
+        },
+        {
+          "id": "panificadora",
+          "nome": "Panificadora",
+          "fotos": [
+            "assets/produtos/panificadora.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/Panificadora-Brit%C3%A2nia-Digital-12-Programas-3L-BPNE01-i.811879342.23793180483"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 539.9,
+              "precoPix": 471.71
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "precosLevantadosEm": "2026-10-23",
+  "regraPix": "No Pix de um item, usar 'precoPix' quando existir; senão, 'valor'."
+}

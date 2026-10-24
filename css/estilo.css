@@ -1,0 +1,502 @@
+/* Chá de casa nova Heitor e Ana. Identidade visual extraída do PDF modelo (seção 4). */
+
+:root {
+  --fundo: #F2EDE4;
+  --cartao: #FFFFFF;
+  --borda: #E6DECF;
+  --verde: #6E8362;
+  --verde-escuro: #4E6343;
+  --verde-claro: #9BAE8E;
+  --texto-nome: #333F2A;
+  --texto: #4A4A40;
+  --nota: #9A9A8A;
+  --erro: #A04A3A;
+
+  --serifada: 'Cormorant Garamond', Georgia, serif;
+  --manuscrita: 'Great Vibes', cursive;
+  --sem-serifa: 'Lato', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --raio: 18px;
+  --largura: 880px;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* "hidden" sempre vence o display dos componentes. */
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--serifada);
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+main, .topo, .rodape {
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+img { max-width: 100%; display: block; }
+
+.manuscrita {
+  font-family: var(--manuscrita);
+  font-weight: 400;
+  color: var(--verde-escuro);
+  line-height: 1.1;
+}
+
+/* ---------- Banner ---------- */
+.topo { padding-top: 16px; }
+.banner {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(78, 99, 67, .12);
+}
+
+/* ---------- Boas-vindas ---------- */
+.boas-vindas {
+  margin: 28px auto 8px;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.12rem;
+  color: #55574A;
+}
+.boas-vindas p { margin: 0 0 14px; }
+
+/* ---------- Separador: linha — coração — linha ---------- */
+.separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px auto 24px;
+}
+.separador::before, .separador::after {
+  content: '';
+  width: 54px;
+  height: 1px;
+  background: var(--verde-claro);
+}
+.separador svg { width: 16px; height: 16px; fill: var(--verde-claro); }
+
+/* ---------- Cartões ---------- */
+.cartao {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+}
+
+/* ---------- Como participar? ---------- */
+.como-participar {
+  padding: 24px 18px 28px;
+  text-align: center;
+}
+.como-participar h2 { font-size: 2.6rem; margin: 0 0 18px; }
+.passos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+  font-family: var(--sem-serifa);
+  font-size: .95rem;
+  line-height: 1.45;
+  color: #3E3E36;
+}
+.passos li { display: flex; flex-direction: column; align-items: center; gap: 10px; max-width: 260px; margin: 0 auto; }
+.numero {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--verde);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--serifada);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* ---------- Agradecimento e assinatura ---------- */
+.agradecimento {
+  text-align: center;
+  margin: 30px auto 10px;
+  font-size: 1.1rem;
+  color: #55574A;
+}
+.agradecimento p { margin: 0; }
+.coracao-inline { width: 13px; height: 13px; fill: var(--verde); vertical-align: -1px; }
+.assinatura-pre { margin-top: 22px !important; font-style: italic; font-size: .95rem; color: var(--nota); }
+.assinatura { font-size: 3.2rem; margin-top: -4px !important; }
+
+/* ---------- Seções da lista ---------- */
+.secao { margin-top: 48px; text-align: center; }
+.subtitulo-secao {
+  margin: 0;
+  font-style: italic;
+  color: var(--nota);
+  font-size: 1.05rem;
+}
+.titulo-secao { font-size: 3rem; margin: 0; }
+.carregando { text-align: center; color: var(--nota); font-style: italic; margin: 48px 0; }
+
+/* Flex em vez de grid para centralizar a última linha quando ela não fecha
+   (ex.: 14 itens em 3 colunas). */
+.grade {
+  --colunas: 1;
+  --vao: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--vao);
+  text-align: center;
+}
+.grade > .card-item {
+  flex: 0 0 calc((100% - (var(--colunas) - 1) * var(--vao)) / var(--colunas));
+  min-width: 0;
+}
+
+/* ---------- Card de presente ---------- */
+.card-item {
+  position: relative;
+  padding: 16px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fotos {
+  height: 170px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.fotos img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: opacity .2s, filter .2s;
+}
+.fotos-duas img { max-width: calc(50% - 4px); }
+
+.nome-item {
+  margin: 0;
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--texto-nome);
+  line-height: 1.2;
+}
+.nota {
+  margin: 4px 0 0;
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--nota);
+}
+.aviso-variacao {
+  margin: 6px 0 0;
+  font-family: var(--sem-serifa);
+  font-size: .82rem;
+  color: var(--verde-escuro);
+  background: #EEF2EA;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+.aviso-variacao strong { font-weight: 700; }
+
+.botoes-loja {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto; /* alinha os botões na base, mesmo com nomes de 2 linhas */
+  padding-top: 12px;
+}
+
+/* ---------- Botões ---------- */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--verde);
+  background: var(--verde);
+  color: #fff;
+  font-family: var(--sem-serifa);
+  font-weight: 700;
+  font-size: .9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s, color .15s, opacity .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.botao:hover { background: var(--verde-escuro); border-color: var(--verde-escuro); }
+.botao:focus-visible, .botao-texto:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--verde-escuro);
+  outline-offset: 2px;
+}
+.botao-contorno { background: transparent; color: var(--verde); }
+.botao-contorno:hover { background: #F1F4EE; color: var(--verde-escuro); }
+.botao:disabled { opacity: .6; cursor: default; }
+.botao.desativado, .botao[aria-disabled='true'] {
+  opacity: .55;
+  cursor: default;
+  pointer-events: none;
+}
+.botao-pequeno { min-height: 36px; padding: 0 14px; font-size: .82rem; }
+.botao-largo { width: 100%; }
+.botao.copiado { background: var(--verde-escuro); color: #fff; }
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 14px;
+  margin-top: 6px;
+}
+.acoes .botao-texto { min-height: 36px; padding: 6px 4px; }
+.botao-texto {
+  background: none;
+  border: 0;
+  padding: 10px 4px;
+  min-height: 40px;
+  font-family: var(--sem-serifa);
+  font-size: .85rem;
+  color: var(--verde-escuro);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.botao-texto:hover { color: var(--texto-nome); }
+
+/* ---------- Item já presenteado ---------- */
+.estado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-top: 10px;
+}
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--verde-escuro);
+  color: #fff;
+  font-family: var(--sem-serifa);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+.selo::before { content: '♥'; }
+.presenteado { background: #FBFAF6; }
+.presenteado .fotos img { opacity: .5; filter: grayscale(.4); }
+.presenteado .nome-item { color: #6B705F; }
+
+/* ---------- Formulários ---------- */
+.formulario {
+  padding: 20px 18px;
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+label {
+  display: grid;
+  gap: 6px;
+  font-family: var(--sem-serifa);
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--texto-nome);
+}
+input, textarea {
+  width: 100%;
+  font: inherit;
+  font-family: var(--sem-serifa);
+  font-weight: 400;
+  font-size: 16px; /* evita zoom automático no iPhone */
+  color: #2A2A24;
+  padding: 11px 12px;
+  border: 1px solid #D9D1C2;
+  border-radius: 10px;
+  background: #FFFDF9;
+}
+textarea { resize: vertical; }
+.ajuda {
+  margin: 0;
+  font-style: italic;
+  font-size: .95rem;
+  color: var(--nota);
+  text-align: center;
+}
+.erro {
+  margin: 0;
+  color: var(--erro);
+  font-family: var(--sem-serifa);
+  font-size: .88rem;
+}
+.sucesso {
+  margin: 0;
+  color: var(--verde-escuro);
+  font-family: var(--sem-serifa);
+  font-weight: 700;
+  font-size: .92rem;
+  text-align: center;
+}
+
+/* ---------- Pix ---------- */
+.cartao-pix { padding: 20px 18px 6px; }
+.texto-pixinho { margin: 0 0 8px; font-style: italic; color: #55574A; }
+.bloco-pix {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  margin: 4px 0 8px;
+}
+.valor-pix { margin: 0; font-size: 1.15rem; color: var(--texto-nome); }
+.valor-pix strong { font-family: var(--sem-serifa); }
+.qr {
+  width: 200px;
+  height: 200px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 4px;
+  background: #fff;
+}
+.linha-chave {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px dashed #CFC6B5;
+  border-radius: 12px;
+  text-align: left;
+}
+.linha-chave > div { min-width: 0; }
+.rotulo-chave {
+  display: block;
+  font-family: var(--sem-serifa);
+  font-size: .75rem;
+  color: var(--nota);
+}
+.chave {
+  font-family: var(--sem-serifa);
+  font-size: .92rem;
+  color: var(--texto-nome);
+  word-break: break-all;
+}
+.cartao-pix .formulario { padding: 12px 0 18px; }
+
+/* ---------- Diálogo ---------- */
+dialog {
+  width: 100%;
+  max-width: 460px;
+  max-height: 92dvh;
+  margin: auto auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 20px 20px 0 0;
+  background: var(--cartao);
+  color: var(--texto);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, .15);
+}
+dialog::backdrop { background: rgba(40, 46, 34, .45); }
+.dialogo-corpo {
+  padding: 22px 18px calc(18px + env(safe-area-inset-bottom));
+  display: grid;
+  gap: 14px;
+}
+.dialogo-titulo { margin: 0; font-size: 1.5rem; font-weight: 700; color: var(--texto-nome); text-align: center; }
+.dialogo-item { margin: -8px 0 0; text-align: center; font-style: italic; color: var(--nota); font-size: 1.05rem; }
+.dialogo-corpo .aviso-variacao { justify-self: center; }
+.opcoes {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.opcoes legend {
+  font-family: var(--sem-serifa);
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--texto-nome);
+  margin-bottom: 6px;
+}
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #D9D1C2;
+  border-radius: 12px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.opcao input { width: 20px; height: 20px; margin: 0; accent-color: var(--verde); }
+.opcao:has(input:checked) { border-color: var(--verde); background: #F1F4EE; }
+.dialogo-botoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.dialogo-botoes:has(> :only-child) { grid-template-columns: 1fr; }
+
+/* ---------- Rodapé ---------- */
+.rodape {
+  margin-top: 56px;
+  padding-bottom: calc(28px + env(safe-area-inset-bottom));
+  text-align: center;
+  font-style: italic;
+  color: var(--nota);
+  font-size: .95rem;
+}
+.rodape p { margin: 0 0 6px; }
+.link-discreto {
+  font-family: var(--sem-serifa);
+  font-style: normal;
+  font-size: .75rem;
+  color: #B3AE9E;
+  text-decoration: none;
+}
+.link-discreto:hover { text-decoration: underline; }
+
+/* ---------- Tablet: 2 colunas ---------- */
+@media (min-width: 600px) {
+  body { font-size: 19px; }
+  .grade { --colunas: 2; }
+  .passos { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .como-participar { padding: 26px 28px 32px; }
+  .como-participar h2 { font-size: 3rem; }
+  .titulo-secao { font-size: 3.4rem; }
+  .assinatura { font-size: 3.6rem; }
+  .boas-vindas { font-size: 1.2rem; }
+  dialog { margin: auto; border-radius: 20px; }
+  .formulario, .cartao-pix { padding-left: 28px; padding-right: 28px; }
+  #mural .formulario, #pixinho .cartao { max-width: 560px; margin: 0 auto; }
+}
+
+/* ---------- Desktop: 3 colunas ---------- */
+@media (min-width: 900px) {
+  .grade { --colunas: 3; --vao: 20px; }
+  .topo { padding-top: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

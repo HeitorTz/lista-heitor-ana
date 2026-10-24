@@ -1,0 +1,74 @@
+/* Área do casal: complementa estilo.css. */
+
+.pagina-casal main { padding-top: 20px; padding-bottom: 48px; }
+.cabecalho-casal { text-align: center; margin-bottom: 18px; }
+.cabecalho-casal h1 { font-size: 3rem; margin: 6px 0 0; }
+#form-login, #nao-autorizado { max-width: 420px; margin: 0 auto; }
+.aviso-conta { margin: 0; text-align: center; }
+
+.barra-painel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+#resumo { margin: 0; font-family: var(--sem-serifa); font-size: .92rem; color: var(--texto-nome); }
+
+.abas {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--borda);
+}
+.abas button {
+  flex: none;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  padding: 12px 12px 10px;
+  font-family: var(--sem-serifa);
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--nota);
+  cursor: pointer;
+}
+.abas button[aria-selected='true'] { color: var(--verde-escuro); border-bottom-color: var(--verde); }
+
+.grupo-titulo {
+  font-family: var(--serifada);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--verde-escuro);
+  margin: 22px 0 8px;
+}
+.registro {
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  display: grid;
+  gap: 4px;
+}
+.registro-topo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.registro-titulo { margin: 0; font-weight: 700; color: var(--texto-nome); font-size: 1.1rem; }
+.registro-meta { margin: 0; font-family: var(--sem-serifa); font-size: .82rem; color: #6F705F; }
+.registro-texto { margin: 4px 0 0; white-space: pre-wrap; font-size: 1.02rem; }
+.etiqueta {
+  flex: none;
+  font-family: var(--sem-serifa);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #EEF2EA;
+  color: var(--verde-escuro);
+}
+.etiqueta.livre { background: #F3EFE6; color: var(--nota); }
+.registro.disponivel { opacity: .75; }
+.registro .botao-texto { justify-self: start; padding-left: 0; color: var(--erro); }
+.vazio { color: var(--nota); font-style: italic; text-align: center; margin: 28px 0; }

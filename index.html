@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chá de casa nova Heitor e Ana</title>
+  <meta name="description" content="Chá de casa nova Heitor e Ana: lista de presentes.">
+  <meta property="og:title" content="Chá de casa nova Heitor e Ana">
+  <meta property="og:description" content="Lista de presentes do nosso novo cantinho.">
+  <meta property="og:image" content="assets/banner.webp">
+  <meta name="theme-color" content="#F2EDE4">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236E8362' d='M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Great+Vibes&family=Lato:wght@400;700&display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="modulepreload" href="js/app.js">
+</head>
+<body>
+  <!-- Coração usado nos separadores -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="coracao" viewBox="0 0 24 24">
+      <path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/>
+    </symbol>
+  </svg>
+
+  <header class="topo">
+    <img class="banner" src="assets/banner.webp" width="1600" height="533"
+         alt="Chá de panela online. Um novo lar, uma nova história e a felicidade de tê-los com a gente! Foto de Ana e Heitor.">
+  </header>
+
+  <main>
+    <section class="boas-vindas">
+      <p>Queridos familiares e amigos, vocês são pessoas muito importantes para nós e fazem parte da nossa história.</p>
+      <p>Depois de muito sonhar, chegou a hora de construirmos o nosso cantinho juntos! Como não faremos uma cerimônia ou festa de casamento, escolhemos celebrar esse momento de uma forma simples, mas com o mesmo carinho.</p>
+      <p>Se você quiser fazer parte desse novo começo, ficaremos muito felizes com seu gesto de carinho por meio do nosso chá de panela online.</p>
+    </section>
+
+    <div class="separador" aria-hidden="true"><svg><use href="#coracao"/></svg></div>
+
+    <section class="cartao como-participar" aria-labelledby="titulo-participar">
+      <h2 id="titulo-participar" class="manuscrita">Como participar?</h2>
+      <ol class="passos">
+        <li><span class="numero">1</span>Escolha na lista o item com o qual mais deseja nos presentear.</li>
+        <li><span class="numero">2</span>Toque no botão do presente para abrir a loja e comprá-lo direto pelo site, enviando para nós.</li>
+        <li><span class="numero">3</span>Se preferir, envie o valor correspondente ao presente escolhido.</li>
+      </ol>
+    </section>
+
+    <section class="agradecimento">
+      <p>Mais do que qualquer presente, somos muito gratos por todo o apoio, carinho e por torcerem pela nossa felicidade e por essa nova fase das nossas vidas. Que Deus abençoe cada um de vocês! <svg class="coracao-inline" aria-label="coração"><use href="#coracao"/></svg></p>
+      <p class="assinatura-pre">Com carinho,</p>
+      <p class="assinatura manuscrita">Ana &amp; Heitor</p>
+    </section>
+
+    <div id="lista" aria-live="polite">
+      <p class="carregando">Carregando a lista…</p>
+    </div>
+
+    <section class="secao" id="pixinho" aria-labelledby="titulo-pixinho">
+      <h2 id="titulo-pixinho" class="titulo-secao manuscrita">Pixinho solidário</h2>
+      <div class="separador" aria-hidden="true"><svg><use href="#coracao"/></svg></div>
+      <div class="cartao cartao-pix" id="pixinho-conteudo"></div>
+    </section>
+
+    <section class="secao" id="mural" aria-labelledby="titulo-mural">
+      <h2 id="titulo-mural" class="titulo-secao manuscrita">Deixe sua mensagem</h2>
+      <div class="separador" aria-hidden="true"><svg><use href="#coracao"/></svg></div>
+      <form class="cartao formulario" id="form-mural" novalidate>
+        <p class="ajuda">Só Ana e Heitor vão ler.</p>
+        <label>Seu nome
+          <input name="nome" autocomplete="name" maxlength="80" required>
+        </label>
+        <label>Mensagem
+          <textarea name="texto" rows="4" maxlength="1000" required></textarea>
+        </label>
+        <p class="erro" role="alert" hidden></p>
+        <button class="botao" type="submit">Enviar mensagem</button>
+        <p class="sucesso" role="status" hidden>Mensagem enviada. Muito obrigado!</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Ana &amp; Heitor</p>
+    <a class="link-discreto" href="casal.html">Área do casal</a>
+  </footer>
+
+  <dialog id="dialogo" aria-labelledby="dialogo-titulo">
+    <form method="dialog" class="dialogo-corpo" id="dialogo-form" novalidate></form>
+  </dialog>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

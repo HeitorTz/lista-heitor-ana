@@ -1,0 +1,22 @@
+{
+  "name": "cha-casa-nova-heitor-ana",
+  "private": true,
+  "type": "module",
+  "description": "Lista de presentes do Chá de casa nova Heitor e Ana. O site não tem build; estas dependências são só para testes e scripts.",
+  "scripts": {
+    "emuladores": "firebase emulators:start --project demo-cha-casa-nova",
+    "webp": "node scripts/converter-webp.mjs",
+    "teste:pix": "node --test testes/pix.test.mjs",
+    "teste:regras": "firebase emulators:exec --only firestore --project demo-cha-casa-nova \"node --test testes/regras.test.mjs\"",
+    "teste": "npm run teste:pix && npm run teste:regras",
+    "emuladores:salvar": "firebase emulators:start --project demo-cha-casa-nova --import=./.emulador-dados --export-on-exit=./.emulador-dados",
+    "test": "npm run teste"
+  },
+  "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
+    "firebase": "^12.19.0",
+    "jsqr": "^1.4.0",
+    "qrcode-generator": "^2.0.4",
+    "sharp": "^0.35.5"
+  }
+}

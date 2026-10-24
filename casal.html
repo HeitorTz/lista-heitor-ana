@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Área do casal · Chá de casa nova Heitor e Ana</title>
+  <meta name="theme-color" content="#F2EDE4">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236E8362' d='M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.6.7-1.4 2.2-2.6 4.3-2.6 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Lato:wght@400;700&display=swap">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/casal.css">
+</head>
+<body class="pagina-casal">
+  <main>
+    <header class="cabecalho-casal">
+      <a class="link-discreto" href="./">← Voltar para a lista</a>
+      <h1 class="manuscrita">Área do casal</h1>
+    </header>
+
+    <section class="cartao formulario" id="form-login" hidden>
+      <p class="erro" role="alert" hidden></p>
+      <button class="botao" type="button" id="entrar-google">Entrar com Google</button>
+    </section>
+
+    <section class="cartao formulario" id="nao-autorizado" hidden>
+      <p class="aviso-conta"></p>
+      <button class="botao botao-contorno" type="button" data-sair>Sair</button>
+    </section>
+
+    <div id="painel" hidden>
+      <div class="barra-painel">
+        <p id="resumo"></p>
+        <button class="botao botao-contorno botao-pequeno" type="button" data-sair>Sair</button>
+      </div>
+
+      <nav class="abas" role="tablist">
+        <button role="tab" type="button" data-aba="presentes" aria-selected="true">Presentes</button>
+        <button role="tab" type="button" data-aba="mensagens" aria-selected="false">Mensagens</button>
+        <button role="tab" type="button" data-aba="pix" aria-selected="false">Pix informados</button>
+      </nav>
+
+      <section id="aba-presentes" role="tabpanel"></section>
+      <section id="aba-mensagens" role="tabpanel" hidden></section>
+      <section id="aba-pix" role="tabpanel" hidden></section>
+    </div>
+  </main>
+
+  <script type="module" src="js/casal.js"></script>
+</body>
+</html>
