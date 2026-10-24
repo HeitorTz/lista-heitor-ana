@@ -1,4 +1,4 @@
-// Área do casal: login único pelo Google (heitor.tomazeli@gmail.com).
+// Área do casal: login único pelo Google (heitortomazeli@gmail.com).
 // Quem pode ler o quê é decidido pelo firestore.rules; esta página só mostra.
 import {
   GoogleAuthProvider,

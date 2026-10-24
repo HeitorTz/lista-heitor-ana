@@ -20,7 +20,8 @@ import {
   writeBatch,
 } from 'firebase/firestore';
 
-const EMAIL_CASAL = 'heitor.tomazeli@gmail.com';
+// Forma oficial da conta, como o Google entrega no token.
+const EMAIL_CASAL = 'heitortomazeli@gmail.com';
 
 let ambiente;
 
@@ -164,6 +165,28 @@ describe('visitante não lê compras nem mensagens', () => {
       .firestore();
     await assertFails(getDocs(collection(porSenha, 'compras')));
     await assertFails(getDocs(collection(porSenha, 'mensagens')));
+  });
+
+  test('o casal lê com o e-mail com ponto (mesma conta no Gmail)', async () => {
+    const comPonto = ambiente
+      .authenticatedContext('uid-casal', {
+        email: 'heitor.tomazeli@gmail.com',
+        email_verified: true,
+        firebase: { sign_in_provider: 'google.com' },
+      })
+      .firestore();
+    await assertSucceeds(getDocs(collection(comPonto, 'compras')));
+  });
+
+  test('outro Gmail parecido não lê', async () => {
+    const outro = ambiente
+      .authenticatedContext('impostor', {
+        email: 'heitortomazeli2@gmail.com',
+        email_verified: true,
+        firebase: { sign_in_provider: 'google.com' },
+      })
+      .firestore();
+    await assertFails(getDocs(collection(outro, 'compras')));
   });
 });
 

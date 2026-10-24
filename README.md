@@ -27,7 +27,7 @@ Os emuladores começam vazios toda vez. Para guardar os dados entre execuções,
 
 ### Login do casal
 
-A área do casal entra **pelo Google**, e as regras do Firestore liberam a leitura só para `heitor.tomazeli@gmail.com` com login Google. No emulador, "Entrar com Google" abre uma tela falsa do emulador: toque em "Add new account" e digite esse e-mail (nenhuma senha é pedida).
+A área do casal entra **pelo Google**, e as regras do Firestore liberam a leitura só para `heitortomazeli@gmail.com` com login Google. No emulador, "Entrar com Google" abre uma tela falsa do emulador: toque em "Add new account" e digite esse e-mail (nenhuma senha é pedida).
 
 ## Testes
 

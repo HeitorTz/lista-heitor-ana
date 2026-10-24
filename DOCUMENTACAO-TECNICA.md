@@ -210,11 +210,11 @@ npm run emuladores
 - Área do casal: http://127.0.0.1:5000/casal.html
 - Painel dos emuladores: http://127.0.0.1:4000
 
-No emulador, "Entrar com Google" abre uma tela falsa: "Add new account" e o e-mail `heitor.tomazeli@gmail.com` (sem senha). Os dados começam vazios a cada execução; para guardá-los use `npm run emuladores:salvar` (grava em `.emulador-dados/`).
+No emulador, "Entrar com Google" abre uma tela falsa: "Add new account" e o e-mail `heitortomazeli@gmail.com` (sem senha). Os dados começam vazios a cada execução; para guardá-los use `npm run emuladores:salvar` (grava em `.emulador-dados/`).
 
 ### 1.7 Memória do Claude Code (opcional)
 
-A memória do Claude Code fica no perfil do Windows, fora do OneDrive, e não vem junto. O conteúdo relevante dela já está neste documento (seções 1.2, 5 e 7). Se quiser recriá-la, peça ao Claude na máquina nova: "lembre que o projeto Firebase é lista-heitor-ana (conta htkarater10@gmail.com), o login do casal é Google com heitor.tomazeli@gmail.com, e o terminal do VS Code precisa recarregar o PATH antes de usar node/firebase".
+A memória do Claude Code fica no perfil do Windows, fora do OneDrive, e não vem junto. O conteúdo relevante dela já está neste documento (seções 1.2, 5 e 7). Se quiser recriá-la, peça ao Claude na máquina nova: "lembre que o projeto Firebase é lista-heitor-ana (conta htkarater10@gmail.com), o login do casal é Google com heitortomazeli@gmail.com, e o terminal do VS Code precisa recarregar o PATH antes de usar node/firebase".
 
 As configurações globais do Claude Code na máquina original (`%USERPROFILE%\.claude\settings.json`) são só:
 
@@ -402,7 +402,7 @@ Banco `(default)`, modo produção, região `southamerica-east1`.
 
 ### 5.3 Regras de segurança (`firestore.rules`)
 
-- `ehCasal()`: `email == 'heitor.tomazeli@gmail.com'`, `email_verified == true` **e** `sign_in_provider == 'google.com'`.
+- `ehCasal()`: `email` igual a `'heitortomazeli@gmail.com'` ou `'heitor.tomazeli@gmail.com'` (o Gmail ignora pontos; o Google entrega a forma sem ponto), `email_verified == true` **e** `sign_in_provider == 'google.com'`.
 - `status` e `compras` se exigem mutuamente via `existsAfter`/`getAfter`: só é possível criar os dois juntos e apagar os dois juntos.
 - Um item já presenteado não pode ser marcado de novo (sobrescrever seria `update`, proibido).
 - Qualquer outro caminho: negado.
@@ -432,7 +432,7 @@ Todos rodam no projeto `demo-cha-casa-nova`, só no emulador.
 | Site | https://lista-heitor-ana.web.app |
 | Firestore | `(default)`, modo produção, `southamerica-east1` |
 | Authentication | provedores **Google** (casal) e **Anônimo** (visitantes) ativados |
-| Login do casal | heitor.tomazeli@gmail.com, pelo Google (D26) |
+| Login do casal | heitortomazeli@gmail.com, pelo Google (D26) |
 | Plano | Spark (gratuito) |
 | Projeto local | `demo-cha-casa-nova` (só existe no emulador) |
 
@@ -487,7 +487,7 @@ Atualizar o SDK do Firebase: troque `12.19.0` nas URLs de `js/firebase.js`, `js/
 | Erros estranhos de arquivo/permissão no `npm` | arquivos do OneDrive só na nuvem | "Sempre manter neste dispositivo" na pasta |
 | Arquivos "-NOMEDAMAQUINA" ou erro de objeto corrompido no Git | as duas máquinas mexeram no `.git` antes de o OneDrive sincronizar | parar, não apagar nada e comparar com a outra máquina (seção 1.1.1) |
 | Login Google bloqueado | pop-up bloqueado pelo navegador | liberar pop-ups para o site |
-| Casal entra mas vê "não autorizado" | conta Google errada | sair e entrar com heitor.tomazeli@gmail.com |
+| Casal entra mas vê "não autorizado" | conta Google errada | sair e entrar com heitortomazeli@gmail.com |
 | `firebase deploy` pede login ou dá 403 | CLI sem login ou com outra conta | `firebase login` / `firebase login:list` com htkarater10@gmail.com |
 | `gh` não encontrado logo após instalar | PATH da sessão desatualizado | recarregar o PATH (seção 1.2) ou usar `& "C:\Program Files\GitHub CLI\gh.exe"` |
 | `git push` pede login ou dá 403 | GitHub CLI sem login nesta máquina | usuário roda `gh auth login`; conferir com `gh auth status` (conta HeitorTz) |

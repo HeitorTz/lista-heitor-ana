@@ -127,7 +127,7 @@ Depois das três seções, nesta ordem:
 
 ### 3.5 Área do casal
 - Página `casal.html`, acessada pelo link discreto "Área do casal" no rodapé. Não é indexada por buscadores.
-- **Login único** pelo Google: conta **heitor.tomazeli@gmail.com**, compartilhada por Ana e Heitor (D26). As regras exigem esse e-mail, verificado, com login Google.
+- **Login único** pelo Google: conta **heitortomazeli@gmail.com** (o Gmail ignora pontos; as regras aceitam também heitor.tomazeli@gmail.com), compartilhada por Ana e Heitor (D26). As regras exigem esse e-mail, verificado, com login Google.
 - Abas:
   - **Presentes:** os 35 itens com status e, quando marcados, quem comprou, data/hora, opção escolhida, forma (loja ou Pix com valor) e mensagem. Botão "Desmarcar" em cada item marcado (D8).
   - **Mensagens:** mural e mensagens deixadas junto de presentes (com o nome do item), com opção de apagar.
@@ -287,7 +287,7 @@ Todos os itens têm valor de Pix. No Conjunto de formas, o card avisa que o pres
 - D23 preço não aparece no card, só no fluxo de Pix
 - D24 botão "copia e cola" do Pix, além do QR e da chave
 - D25 fotos em WebP (originais PNG mantidos); `itens.json` aponta para os `.webp`
-- D26 **login do casal pelo Google com heitor.tomazeli@gmail.com** (substitui o login htkarater10@hotmail.com com senha da D20); projeto Firebase `lista-heitor-ana`
+- D26 **login do casal pelo Google com heitortomazeli@gmail.com** (substitui o login htkarater10@hotmail.com com senha da D20); projeto Firebase `lista-heitor-ana`
 - D27 cabeceira de cama na cor **Bege** (campo `variacao` do `itens.json`, mesmo aviso do Kit 12 Formas)
 
 ---
@@ -320,7 +320,7 @@ Conferidos em 23/10/2026 no Firebase Emulator Suite, com testes automatizados (3
 - Link das toalhas recebido (P7) e preço preenchido (P8: R$ 218,35). Total de links: 36.
 - Fotos convertidas para WebP; caminhos no `itens.json` atualizados.
 - Registradas as decisões D18 a D25 e os textos novos.
-- Depois: login do casal passou a ser pelo Google, com heitor.tomazeli@gmail.com (D26).
+- Depois: login do casal passou a ser pelo Google, com heitortomazeli@gmail.com (D26; o Google entrega a conta sem ponto, e as regras aceitam as duas formas).
 
 ---
 
