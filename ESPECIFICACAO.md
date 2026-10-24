@@ -1,7 +1,7 @@
 # Site de Lista de Presentes — Chá de casa nova Heitor e Ana
 
 Especificação para desenvolvimento no Claude Code.
-Versão 9 — 23/10/2026. Atualizada após a implementação local (mudanças nas seções 10 e 11).
+Versão 10 — 24/10/2026. Atualizada após a implementação local (mudanças nas seções 10 e 11).
 
 **Título do site** (aba do navegador e cabeçalho/metadados): **Chá de casa nova Heitor e Ana**.
 
@@ -64,17 +64,17 @@ Ordem no site (D18: Eletroportáteis por último, diferente do PDF):
 
 | Seção | Subtítulo | Itens |
 |---|---|---|
-| Casa & Móveis | Para montar o nosso cantinho | 13 |
+| Casa & Móveis | Para montar o nosso cantinho | 14 |
 | Cozinha & Mesa | Para as receitas e os encontros | 13 |
 | Eletroportáteis | Praticidade para o dia a dia | 9 |
 
-Total: **35 itens, 36 links**. Lista completa em `dados/itens.json`. A ordem das seções no site é a ordem do `itens.json`.
+Total: **36 itens, 37 links**. Lista completa em `dados/itens.json`. A ordem das seções no site é a ordem do `itens.json`.
 
 Itens com particularidades:
 
 | Item | Particularidade |
 |---|---|
-| Box baú para cama | **Alterado:** agora tem só uma opção (a antiga Opção 1, Shopee), botão "Ver na Shopee" |
+| Box baú para cama | **Alterado:** agora tem só uma opção (a antiga Opção 1, Shopee), botão "Ver na Shopee" (P12) |
 | Filtro de água | **Alterado:** agora tem só uma opção (a antiga Opção 2), botão "Ver na Amazon" |
 | Aparelho de jantar 30 peças | **Alterado:** agora tem só uma opção (Porto Brasil linha Roma, novo link), foto da antiga Opção 2, botão "Ver no Mercado Livre" |
 | Conjunto de sobremesa | Duas opções, "precisamos de apenas um" |
@@ -92,7 +92,7 @@ Depois das três seções, nesta ordem:
 - **Pixinho solidário:** card de Pix sem valor fixo (ver 3.3).
 - **Mural de mensagens:** título "Deixe sua mensagem" (ver 3.4).
 - **Rodapé:** "Ana & Heitor" e o link discreto "Área do casal".
-- **Endereço de entrega** (adiado, P3).
+- ~~Endereço de entrega~~: **não aparece no site** (decisão P3, 24/10/2026).
 
 ---
 
@@ -208,14 +208,15 @@ Valores no campo `precos` do `itens.json`. Em **negrito**, o valor usado no Pix 
 | **Casa & Móveis** | |
 | Guarda-roupa | **R$ 1.117,96** |
 | Guarda-roupa 4 portas (Ditália DM-580, Shopee) | **R$ 413,91 no Pix** (R$ 459,90 em outros meios) |
+| Guarda-roupa 2 portas (Ditália DM-579, Shopee) | *pendente (P9): a Shopee exigiu login na consulta* |
 | Cômoda | **R$ 269,98** |
-| Box baú para cama | **R$ 608,88 no Pix** (R$ 689,00 em outros meios) |
+| Box baú para cama | Opção 1: **R$ 608,88 no Pix** (R$ 689,00 em outros meios)<br>Opção 2: **R$ 446,11 no Pix** (R$ 484,90 em outros meios) |
 | Cabeceira de cama | **R$ 236,70 no Pix** (R$ 262,99 em outros meios) |
 | Sofá | **R$ 1.299,90** |
 | Mesa com cadeiras (Espanha Yescasa, novo link) | **R$ 682,50 no Pix** (R$ 769,02 em outros meios) |
 | Televisão (Samsung 50" Mini LED 4K M75H, Fast Shop) | **R$ 2.569,00 no Pix** (R$ 2.732,98 em outros meios) |
 | Armário de cozinha (Completa 293 cm Rustic Emilly Madesa) | **R$ 840,44 no Pix** (R$ 940,69 em outros meios) |
-| Filtro de água | **R$ 483,92** |
+| Filtro de água | Opção 1: **R$ 484,40**<br>Opção 2: **R$ 483,92** |
 | Ventilador de coluna com controle | **R$ 238,99** |
 | Toalhas de banho e rosto | **R$ 218,35** (Mercado Livre não mostra preço diferente no Pix) |
 | **Cozinha & Mesa** | |
@@ -253,12 +254,16 @@ Todos os itens têm valor de Pix. No Conjunto de formas, o card avisa que o pres
 |---|---|---|
 | P1 | PDF modelo | ✅ Recebido |
 | P2 | QR Code do Pix: recebedor **Heitor Tomazeli**, cidade **Vitória**, chave **htkarater10@gmail.com**. BR Code estático com o valor do item; no Pixinho solidário, sem valor | ✅ Implementado e validado com o exemplo do Manual do BR Code (Banco Central) |
-| P3 | Endereço de entrega | Adiado |
-| P4 | Publicação | Pendente. Firebase Hosting; roteiro no `README.md` ("O que falta para publicar") |
+| P3 | Endereço de entrega | ✅ Decidido (24/10/2026): **o endereço não aparece no site.** Endereço informado (Rua Clímaco Salles, 62, Romão, Vitória/ES, CEP 29041-320) usado só no levantamento de frete (seção 13) |
+| P4 | Publicação | ✅ Publicado em 23/10/2026 em https://lista-heitor-ana.web.app (Firebase Hosting); para publicar de novo, ver `README.md` |
 | P5 | Preços dos itens | ✅ Levantados (seção 7) |
 | P6 | Link do Mixer 5 em 1 | ✅ Substituído pelo link enviado |
 | P7 | Link das toalhas ("Escolha livre") | ✅ Recebido em 23/10/2026 e colocado no `itens.json` |
 | P8 | Preço das toalhas | ✅ R$ 218,35, levantado em 23/10/2026 |
+| P9 | Preço do Guarda-roupa 2 portas (Ditália DM-579) | ✅ R$ 225,53 no Pix (R$ 249,90 em outros meios), levantado em 24/10/2026; aplicado no `itens.json` com frete de R$ 94,56 (seção 14) |
+| P10 | Frete dos 10 links da Amazon | Pendente: sem login, a Amazon só mostra "grátis no seu primeiro pedido". Levantar com o casal logado na Amazon |
+| P11 | Frete da Cafeteira (Dolce Gusto) | Pendente: o frete só aparece no fechamento do pedido, que exige cadastro. O casal informa o valor ou o frete fica em aberto |
+| P12 | Box baú — Opção 2 (Casas Bahia) | ✅ Decidido (24/10/2026): opção retirada, fica só a da Shopee. A Casas Bahia informa "Entrega indisponível para sua região" para o CEP 29041-320 |
 
 ---
 
@@ -299,7 +304,7 @@ Conferidos em 23/10/2026 no Firebase Emulator Suite, com testes automatizados (3
 
 - [x] Título da página: "Chá de casa nova Heitor e Ana".
 - [x] Página única com banner, textos, "Como participar?", agradecimento e assinatura idênticos ao PDF.
-- [x] As 3 seções com os 35 itens, fotos e os 36 links do `itens.json` (reconferido após as mudanças da seção 11, incluindo o Pix das toalhas com R$ 218,35).
+- [x] As 3 seções com os 35 itens, fotos e os 38 links do `itens.json` (reconferido após as mudanças da seção 11, incluindo o Pix das toalhas com R$ 218,35).
 - [x] Cores e fontes da seção 4; layout funcional no celular.
 - [x] Marcar presente exige nome; o item passa a "Já presenteado" para todos.
 - [x] Quem marcou consegue desmarcar no mesmo aparelho; o casal desmarca qualquer item.
@@ -342,8 +347,109 @@ Fotos novas em `assets/produtos/` (PNG original + WebP de 600 px): `guarda-roupa
 Item removido (depois):
 - **Armário para escritório**, retirado da lista a pedido do casal. Fotos mantidas em `assets/produtos/` (`armario-escritorio`), mas fora do `itens.json`. Total atual: **35 itens, 38 links** (Casa & Móveis 13, Cozinha & Mesa 13, Eletroportáteis 9).
 
+---
+
 ## 12. Mudanças de 24/10/2026
 
-- **Filtro de água:** retirada a Opção 1 (R$ 484,40). Ficou só a antiga Opção 2 (R$ 483,92), com o botão "Ver na Amazon" e sem a nota "Amazon · duas opções", como os demais itens de uma opção. Total atual: **35 itens, 37 links**.
-- **Guarda-roupa 4 portas:** cor pré-definida **Branco Riviera** (campo `variacao`, mesmo aviso da Cabeceira: "Na loja, escolha a opção Branco Riviera"). Link igual; foto trocada pela da cor Riviera (`guarda-roupa-4-portas`, PNG + WebP).
-- **Box baú para cama:** retirada a Opção 2 (Casas Bahia, R$ 446,11 no Pix). Ficou só a antiga Opção 1 (Shopee, R$ 608,88 no Pix, R$ 689,00 em outros meios), com o botão "Ver na Shopee" e sem a nota "Shopee ou Casas Bahia · duas opções". Total atual: **35 itens, 36 links**.
+Item adicionado:
+- **Guarda-roupa 2 portas** (Ditália DM-579, Shopee), em Casa & Móveis, logo após o Guarda-roupa 4 portas. Foto enviada pelo casal (`assets/produtos/guarda-roupa-2-portas`, PNG + WebP de 600 px). Preço pendente (P9).
+
+Total atual: **36 itens, 39 links** (Casa & Móveis 14, Cozinha & Mesa 13, Eletroportáteis 9).
+
+Feito na outra máquina no mesmo dia (juntado na seção 14):
+- **Filtro de água:** retirada a Opção 1 (R$ 484,40). Ficou só a antiga Opção 2, com o botão "Ver na Amazon" e sem a nota "Amazon · duas opções".
+- **Guarda-roupa 4 portas:** cor pré-definida **Branco Riviera** (campo `variacao`, mesmo aviso da Cabeceira). Link igual; foto trocada pela da cor Riviera (`guarda-roupa-4-portas`, PNG + WebP).
+- **Box baú para cama:** retirada a Opção 2 (Casas Bahia). Ficou só a antiga Opção 1 (Shopee), com o botão "Ver na Shopee" e sem a nota "Shopee ou Casas Bahia · duas opções" (decide a P12).
+
+---
+
+## 13. Frete no Pix do item (levantamento de 24/10/2026)
+
+**Regra nova (pedido do casal):** o valor do Pix de um item passa a ser **preço no Pix + frete** até o endereço de entrega. **Aplicada em 24/10/2026** (seção 14); P10 e P11 continuam pendentes.
+
+Critérios usados no levantamento:
+- **CEP de destino:** 29041-320 (Rua Clímaco Salles, Romão, Vitória/ES).
+- **Opção de entrega:** a mais barata (entrega normal).
+- **Shopee:** consultada com a conta do casal logada. A Shopee calcula pelo endereço salvo na conta (Av. Carlos Moreira Lima, CEP 29050-652, também em Vitória); como o frete é por região, vale para o CEP de entrega. Usado o frete **com o cupom de até R$ 40** que a página oferece. Quando o cupom de frete exige compra mínima de R$ 200 na loja, foi usado o frete cheio (o item sozinho não atinge o mínimo). A estimativa sem login dava valores bem menores e foi descartada.
+- **Mercado Livre:** frete grátis em pedidos a partir de R$ 19 (exceto internacionais e alimentos); todos os itens ficam acima disso. A página sem login mostrava "grátis por ser sua primeira compra" com o frete normal riscado; esse valor riscado não foi usado.
+- **Preços:** atualizados no mesmo dia (vários mudaram alguns centavos ou reais desde 23/10).
+
+| Item | Loja | Preço no Pix | Frete | Pix do item (preço + frete) |
+|---|---|---|---|---|
+| **Casa & Móveis** | | | | |
+| Guarda-roupa | Amazon | R$ 1.117,96 | *pendente* | — |
+| Guarda-roupa 4 portas | Shopee | R$ 415,06 | R$ 164,58 (sem cupom: R$ 204,58) | **R$ 579,64** |
+| Guarda-roupa 2 portas | Shopee | R$ 225,53 | R$ 94,56 (sem cupom: R$ 134,56) | **R$ 320,09** |
+| Cômoda | MadeiraMadeira | R$ 269,98 | R$ 136,49 | **R$ 406,47** |
+| Box baú para cama — Opção 1 | Shopee | R$ 610,88 | R$ 222,30 (sem cupom: R$ 262,30) | **R$ 833,18** |
+| Box baú para cama — Opção 2 | Casas Bahia | — | **entrega indisponível** para o CEP | — |
+| Cabeceira de cama | Shopee | R$ 237,35 | R$ 15,47 (sem cupom: R$ 55,47) | **R$ 252,82** |
+| Sofá | Casas Bahia | R$ 1.299,90 | R$ 390,38 | **R$ 1.690,28** |
+| Mesa com cadeiras | Shopee | R$ 684,50 | R$ 155,89 (sem cupom: R$ 195,89) | **R$ 840,39** |
+| Televisão | Fast Shop | R$ 2.569,00 | R$ 29,91 | **R$ 2.598,91** |
+| Armário de cozinha | Shopee | R$ 842,44 | R$ 89,99 (sem cupom: R$ 129,99) | **R$ 932,43** |
+| Filtro de água — Opção 1 | Amazon | R$ 484,40 | *pendente* | — |
+| Filtro de água — Opção 2 | Amazon | R$ 483,92 | *pendente* | — |
+| Ventilador de coluna com controle | Amazon | R$ 238,99 | *pendente* | — |
+| Toalhas de banho e rosto | Mercado Livre | R$ 218,35 | grátis | **R$ 218,35** |
+| Kit 100 cabides de veludo | Shopee | R$ 132,99 | R$ 31,16 (cupom de frete exige R$200 na loja) | **R$ 164,15** |
+| **Cozinha & Mesa** | | | | |
+| Aparelho de jantar 30 peças | Mercado Livre | R$ 398,05 | grátis | **R$ 398,05** |
+| Faqueiro inox | Mercado Livre | R$ 199,99 | grátis | **R$ 199,99** |
+| Jogo de panelas | Shopee | R$ 154,76 | R$ 31,16 (cupom de frete exige R$200 na loja) | **R$ 185,92** |
+| Jogo de frigideiras | Shopee | R$ 104,41 | grátis | **R$ 104,41** |
+| Jogo de canecões | Shopee | R$ 53,78 | grátis | **R$ 53,78** |
+| Jogo de colheres de silicone | Shopee | R$ 45,02 | grátis | **R$ 45,02** |
+| Kit utensílios de cozinha | Shopee | R$ 122,55 | grátis | **R$ 122,55** |
+| Jogo de facas | Shopee | R$ 112,01 | grátis | **R$ 112,01** |
+| Conjunto de formas | Shopee | R$ 195,75 | grátis | **R$ 195,75** |
+| Conjunto de Marinex | Shopee | R$ 123,41 | R$ 99,99 (cupom de frete exige R$200 na loja) | **R$ 223,40** |
+| Jogo de copos | Amazon | R$ 37,89 | *pendente* | — |
+| Conjunto de sobremesa — Opção 1 | Amazon | R$ 95,75 | *pendente* | — |
+| Conjunto de sobremesa — Opção 2 | Amazon | R$ 63,52 | *pendente* | — |
+| Kit 10 potes de vidro herméticos | Shopee | R$ 69,90 | grátis | **R$ 69,90** |
+| **Eletroportáteis** | | | | |
+| Airfryer | Shopee | R$ 553,75 | R$ 24,99 (sem cupom: R$ 64,99) | **R$ 578,74** |
+| Sanduicheira elétrica 3 em 1 | Shopee | R$ 157,69 | grátis | **R$ 157,69** |
+| Panela de arroz elétrica | Shopee | R$ 189,43 | grátis | **R$ 189,43** |
+| Panela de pressão elétrica | Amazon | R$ 299,90 | *pendente* | — |
+| Multiprocessador 9 em 1 | Amazon | R$ 271,13 | *pendente* | — |
+| Mixer 5 em 1 | Mercado Livre | R$ 231,42 | grátis | **R$ 231,42** |
+| Batedeira planetária | Amazon | R$ 269,10 | *pendente* | — |
+| Cafeteira elétrica | Dolce Gusto | R$ 419,90 | *pendente* | — |
+| Panificadora | Shopee | R$ 473,71 | grátis | **R$ 473,71** |
+
+Resumo: 28 links com frete levantado (14 com frete grátis), 11 pendentes (10 da Amazon e a cafeteira), 1 sem entrega para o CEP (Box baú, Opção 2).
+
+### Como aplicar (para o desenvolvimento)
+1. No `itens.json`, cada entrada de `precos` ganha o campo `frete` (número em reais; `0` para grátis; ausente = não levantado). Atualizar também `valor` e `precoPix` com os preços da tabela acima e criar `freteLevantadoEm: "2026-10-24"` e `cepFrete: "29041320"` na raiz.
+2. Em `js/catalogo.js`, `valorPix(item, opcao)` passa a devolver `(precoPix ?? valor) + (frete ?? 0)`. Decidir se item sem frete levantado mostra o Pix sem frete ou esconde o "Presentear via Pix" até o frete existir.
+3. No card ou no modal do Pix, mostrar a composição (ex.: "R$ 684,50 + R$ 155,89 de frete").
+4. Atualizar `testes/pix.test.mjs` para cobrir a soma do frete.
+5. Os fretes mudam com o tempo, como os preços; o futuro agente de atualização de preços deve atualizar os dois.
+
+---
+
+## 14. Aplicado em 24/10/2026: frete no Pix e junção das duas máquinas
+
+**Junção.** A versão 10 desta especificação e o Guarda-roupa 2 portas foram feitos numa máquina; o Filtro de água com uma opção, o Guarda-roupa 4 portas em Branco Riviera e o Box baú com uma opção, na outra (já publicados). As duas versões foram juntadas sem perder nada. Ajustes pontuais feitos nas seções anteriores para refletir o estado atual: tabela de particularidades e totais da 2.5 (Box baú, Filtro, Guarda-roupa 4 portas, regra das duas opções), P4 (publicado), P9 (aplicado), P12 (decidido) e o aviso "ainda não aplicada" da seção 13. As tabelas de preço das seções 7 e 13 ficaram como estavam (são registros dos levantamentos).
+
+**`dados/itens.json`:**
+- **Guarda-roupa 2 portas** (P9): `precoPix` 225,53, `valor` 249,90, `frete` 94,56. Foto em `assets/produtos/guarda-roupa-2-portas` (PNG + WebP; a foto enviada tem 450 px).
+- Os outros **26 links com frete levantado** ganharam o campo `frete` (`0` nos 14 grátis) e o preço no Pix da tabela da seção 13. Mudaram de preço: Guarda-roupa 4 portas (413,91 → 415,06), Box baú (608,88 → 610,88), Cabeceira (236,70 → 237,35), Mesa com cadeiras (682,50 → 684,50), Armário de cozinha (840,44 → 842,44), Aparelho de jantar (403,65 → 398,05), Jogo de panelas (155,71 → 154,76), Jogo de canecões (54,33 → 53,78), Colheres de silicone (45,48 → 45,02), Kit utensílios (123,50 → 122,55), Conjunto de formas (195,21 → 195,75), Airfryer (560,95 → 553,75), Panela de arroz (188,91 → 189,43), Panificadora (471,71 → 473,71).
+- A seção 13 só traz o preço no Pix; o `valor` "em outros meios" dos itens que têm `precoPix` ficou o de 23/10.
+- Na raiz: `"freteLevantadoEm": "2026-10-24"`, `"cepFrete": "29041320"`, `precosLevantadosEm` passou a `2026-10-24`; `regraPix` e `observacao` explicam o `frete`.
+- **Sem `frete`** (P10 e P11): os 9 links da Amazon (Guarda-roupa, Filtro, Ventilador, Jogo de copos, as 2 opções da Sobremesa, Panela de pressão, Multiprocessador, Batedeira) e a Cafeteira. Nenhum valor foi estimado.
+- Box baú: a Opção 2 não volta (P12 decidida). Total: **36 itens, 37 links**.
+
+**Regra do Pix** (`js/catalogo.js`): `valorPix(item, opcao)` = (`precoPix` ?? `valor`) + (`frete` ?? 0), arredondado para centavos; `composicaoPix` devolve preço, frete e total. Decisão do casal para itens **sem frete levantado**: continuam como antes, com o "Presentear via Pix" só com o preço, até o frete ser enviado.
+
+**Modal do Pix** (`js/app.js`): com frete, "R$ 684,50 + R$ 155,89 de frete = **R$ 840,39**"; frete 0, "**R$ 398,05** · frete grátis"; sem frete levantado, "Valor: **R$ 37,89**", como antes. O QR e o "copia e cola" levam o total. A área do casal também mostra o total (preço + frete) na aba "Pix informados".
+
+**Endereço (P3):** conferido que nenhum endereço ou CEP aparece na página nem no código (`index.html`, `casal.html`, `js/`, `css/`); o CEP fica só no campo `cepFrete` do `itens.json`, que é publicado, mas não é exibido.
+
+**Testes:** `testes/pix.test.mjs` passou de 5 para 9 testes (soma do frete, frete 0, item sem frete e checagem do frete no `itens.json`); regras, 32. Todos aprovados no emulador. Conferido no navegador (emulador, tela de celular): Mesa com cadeiras, Aparelho de jantar, Jogo de copos (Amazon), Guarda-roupa 2 portas e Guarda-roupa 4 portas.
+
+**Pendente:** P10 (frete da Amazon) e P11 (frete da Cafeteira). Quando chegarem, basta acrescentar `frete` nesses preços do `itens.json`.
+
+- Depois (pedido do casal): **Conjunto de sobremesa — Opção 2** atualizado de R$ 55,90 para **R$ 63,52** (preço da seção 13; frete ainda pendente, P10).

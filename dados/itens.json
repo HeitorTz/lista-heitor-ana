@@ -1,5 +1,5 @@
 {
-  "observacao": "Transcrito do PDF modelo. 'precos' tem uma entrada por botão (mesma ordem de 'botoes'): valor em reais levantado em 23/10/2026, ou null quando a loja bloqueou a consulta. 'precoPix' só quando a loja mostra valor diferente no Pix. Na Shopee, 'precoPix' é o preço no Pix com cupom exibido na página; 'valor' é o preço sem cupom em outros meios.",
+  "observacao": "Transcrito do PDF modelo. 'precos' tem uma entrada por botão (mesma ordem de 'botoes'): valor em reais levantado em 23/10/2026, ou null quando a loja bloqueou a consulta. 'precoPix' só quando a loja mostra valor diferente no Pix. Na Shopee, 'precoPix' é o preço no Pix com cupom exibido na página; 'valor' é o preço sem cupom em outros meios. 'frete' é o frete até o CEP 'cepFrete', levantado em 'freteLevantadoEm' (0 = grátis; ausente = não levantado).",
   "secoes": [
     {
       "id": "casa-moveis",
@@ -39,11 +39,33 @@
           "precos": [
             {
               "valor": 459.9,
-              "precoPix": 413.91
+              "precoPix": 415.06,
+              "frete": 164.58
             }
           ],
           "variacao": "Branco Riviera",
           "adicionadoEm": "2026-10-23"
+        },
+        {
+          "id": "guarda-roupa-2-portas",
+          "nome": "Guarda-roupa 2 portas",
+          "fotos": [
+            "assets/produtos/guarda-roupa-2-portas.webp"
+          ],
+          "botoes": [
+            {
+              "rotulo": "Ver na Shopee",
+              "url": "https://shopee.com.br/product/522316174/22794329356?d_id=74b20&uls_trackid=56v4sn1000l7&utm_content=3CEbq7xw9aKrVCnu5V6xBHrzYQMu"
+            }
+          ],
+          "precos": [
+            {
+              "valor": 249.9,
+              "precoPix": 225.53,
+              "frete": 94.56
+            }
+          ],
+          "adicionadoEm": "2026-10-24"
         },
         {
           "id": "comoda",
@@ -59,7 +81,8 @@
           ],
           "precos": [
             {
-              "valor": 269.98
+              "valor": 269.98,
+              "frete": 136.49
             }
           ]
         },
@@ -77,8 +100,9 @@
           ],
           "precos": [
             {
-              "valor": 689.0,
-              "precoPix": 608.88
+              "valor": 689,
+              "precoPix": 610.88,
+              "frete": 222.3
             }
           ]
         },
@@ -97,7 +121,8 @@
           "precos": [
             {
               "valor": 262.99,
-              "precoPix": 236.7
+              "precoPix": 237.35,
+              "frete": 15.47
             }
           ],
           "variacao": "Bege"
@@ -116,7 +141,8 @@
           ],
           "precos": [
             {
-              "valor": 1299.9
+              "valor": 1299.9,
+              "frete": 390.38
             }
           ]
         },
@@ -135,7 +161,8 @@
           "precos": [
             {
               "valor": 769.02,
-              "precoPix": 682.5
+              "precoPix": 684.5,
+              "frete": 155.89
             }
           ]
         },
@@ -154,7 +181,8 @@
           "precos": [
             {
               "valor": 2732.98,
-              "precoPix": 2569.0
+              "precoPix": 2569,
+              "frete": 29.91
             }
           ]
         },
@@ -173,7 +201,8 @@
           "precos": [
             {
               "valor": 940.69,
-              "precoPix": 840.44
+              "precoPix": 842.44,
+              "frete": 89.99
             }
           ]
         },
@@ -229,7 +258,8 @@
           ],
           "precos": [
             {
-              "valor": 218.35
+              "valor": 218.35,
+              "frete": 0
             }
           ]
         },
@@ -248,7 +278,8 @@
           "precos": [
             {
               "valor": 139.98,
-              "precoPix": 132.99
+              "precoPix": 132.99,
+              "frete": 31.16
             }
           ],
           "adicionadoEm": "2026-10-23"
@@ -275,7 +306,8 @@
           "precos": [
             {
               "valor": 424.9,
-              "precoPix": 403.65
+              "precoPix": 398.05,
+              "frete": 0
             }
           ],
           "alteradoDoPdf": "Opção única (Porto Brasil linha Roma) definida pelo casal em 23/10/2026; a opção Mendi Marfim Oxford foi removida."
@@ -294,7 +326,8 @@
           ],
           "precos": [
             {
-              "valor": 199.99
+              "valor": 199.99,
+              "frete": 0
             }
           ]
         },
@@ -313,7 +346,8 @@
           "precos": [
             {
               "valor": 163.9,
-              "precoPix": 155.71
+              "precoPix": 154.76,
+              "frete": 31.16
             }
           ]
         },
@@ -332,7 +366,8 @@
           "precos": [
             {
               "valor": 109.9,
-              "precoPix": 104.41
+              "precoPix": 104.41,
+              "frete": 0
             }
           ]
         },
@@ -350,7 +385,8 @@
           ],
           "precos": [
             {
-              "valor": 54.33
+              "valor": 53.78,
+              "frete": 0
             }
           ]
         },
@@ -368,7 +404,8 @@
           ],
           "precos": [
             {
-              "valor": 45.48
+              "valor": 45.02,
+              "frete": 0
             }
           ]
         },
@@ -387,7 +424,8 @@
           "precos": [
             {
               "valor": 129.99,
-              "precoPix": 123.5
+              "precoPix": 122.55,
+              "frete": 0
             }
           ]
         },
@@ -406,7 +444,8 @@
           "precos": [
             {
               "valor": 117.9,
-              "precoPix": 112.01
+              "precoPix": 112.01,
+              "frete": 0
             }
           ]
         },
@@ -425,7 +464,8 @@
           "precos": [
             {
               "valor": 216.9,
-              "precoPix": 195.21
+              "precoPix": 195.75,
+              "frete": 0
             }
           ],
           "variacao": "Kit 12 Formas"
@@ -445,7 +485,8 @@
           "precos": [
             {
               "valor": 129.9,
-              "precoPix": 123.41
+              "precoPix": 123.41,
+              "frete": 99.99
             }
           ]
         },
@@ -490,7 +531,7 @@
               "valor": 95.75
             },
             {
-              "valor": 55.9
+              "valor": 63.52
             }
           ]
         },
@@ -508,7 +549,8 @@
           ],
           "precos": [
             {
-              "valor": 69.9
+              "valor": 69.9,
+              "frete": 0
             }
           ],
           "adicionadoEm": "2026-10-23"
@@ -535,7 +577,8 @@
           "precos": [
             {
               "valor": 636.9,
-              "precoPix": 560.95
+              "precoPix": 553.75,
+              "frete": 24.99
             }
           ]
         },
@@ -554,7 +597,8 @@
           "precos": [
             {
               "valor": 165.98,
-              "precoPix": 157.69
+              "precoPix": 157.69,
+              "frete": 0
             }
           ]
         },
@@ -573,7 +617,8 @@
           "precos": [
             {
               "valor": 209.9,
-              "precoPix": 188.91
+              "precoPix": 189.43,
+              "frete": 0
             }
           ]
         },
@@ -627,7 +672,8 @@
           ],
           "precos": [
             {
-              "valor": 231.42
+              "valor": 231.42,
+              "frete": 0
             }
           ]
         },
@@ -682,13 +728,16 @@
           "precos": [
             {
               "valor": 539.9,
-              "precoPix": 471.71
+              "precoPix": 473.71,
+              "frete": 0
             }
           ]
         }
       ]
     }
   ],
-  "precosLevantadosEm": "2026-10-23",
-  "regraPix": "No Pix de um item, usar 'precoPix' quando existir; senão, 'valor'."
+  "precosLevantadosEm": "2026-10-24",
+  "regraPix": "No Pix de um item, usar 'precoPix' quando existir (senão 'valor') mais 'frete' (0 = grátis; ausente = frete ainda não levantado, o Pix sai só com o preço).",
+  "freteLevantadoEm": "2026-10-24",
+  "cepFrete": "29041320"
 }

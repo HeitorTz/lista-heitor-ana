@@ -11,12 +11,21 @@ export async function carregarCatalogo() {
   return { ...catalogo, porId };
 }
 
-// Regra D13: no Pix do item, usa "precoPix" quando existe; senão, "valor".
+// Regra D13 + frete: no Pix do item, usa "precoPix" quando existe (senão "valor")
+// e soma o "frete" (0 = grátis; ausente = ainda não levantado, soma 0).
 // Devolve null quando o item (ou a opção) ainda não tem preço.
-export function valorPix(item, opcao = 0) {
+export function composicaoPix(item, opcao = 0) {
   const preco = item.precos?.[opcao];
-  if (!preco) return null;
-  return preco.precoPix ?? preco.valor ?? null;
+  const base = preco?.precoPix ?? preco?.valor ?? null;
+  if (base == null) return null;
+  const frete = preco.frete ?? null;
+  // Arredonda para centavos: 684.5 + 155.89 daria 840.3900000000001.
+  const total = Math.round((base + (frete ?? 0)) * 100) / 100;
+  return { preco: base, frete, total };
+}
+
+export function valorPix(item, opcao = 0) {
+  return composicaoPix(item, opcao)?.total ?? null;
 }
 
 export function temDuasOpcoes(item) {

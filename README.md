@@ -35,8 +35,8 @@ A área do casal entra **pelo Google**, e as regras do Firestore liberam a leitu
 npm test
 ```
 
-- `testes/pix.test.mjs` (5 testes): CRC16 contra o valor de checagem do padrão; o exemplo do Manual do BR Code do Banco Central, reproduzido byte a byte (CRC `1D3D`); Pix com valor; Pixinho sem valor; o QR gerado é lido de volta (jsQR) e dá o mesmo código.
-- `testes/regras.test.mjs` (30 testes): sobe o emulador do Firestore sozinho e cobre:
+- `testes/pix.test.mjs` (9 testes): CRC16 contra o valor de checagem do padrão; o exemplo do Manual do BR Code do Banco Central, reproduzido byte a byte (CRC `1D3D`); Pix com valor; Pixinho sem valor; o QR gerado é lido de volta (jsQR) e dá o mesmo código; soma do frete, frete 0 (grátis), item sem frete levantado e checagem do frete no `itens.json`.
+- `testes/regras.test.mjs` (32 testes): sobe o emulador do Firestore sozinho e cobre:
   - visitante (logado ou não) não lê compras, mensagens nem pixinhos, nem a própria compra;
   - visitante só apaga a marcação que ele mesmo fez;
   - o casal lê tudo e apaga qualquer marcação;
@@ -80,8 +80,8 @@ testes/               testes do Pix e das regras
 
 Tudo fica em `dados/itens.json`. O código não tem nenhum preço.
 
-- `precos` tem uma entrada por botão, na mesma ordem de `botoes`: `{ "valor": 123.45, "precoPix": 110.00 }`.
-- Regra do Pix do item: usa `precoPix` quando existe; senão, `valor`.
+- `precos` tem uma entrada por botão, na mesma ordem de `botoes`: `{ "valor": 123.45, "precoPix": 110.00, "frete": 25.90 }` (`frete: 0` = grátis; sem `frete` = ainda não levantado).
+- Regra do Pix do item: `precoPix` quando existe (senão `valor`) **mais o `frete`**. O modal mostra a conta ("R$ 684,50 + R$ 155,89 de frete = R$ 840,39", ou "frete grátis"). Item sem `frete` mostra o Pix só com o preço. Atualize `freteLevantadoEm` junto; o CEP usado fica em `cepFrete`.
 - Atualize `precosLevantadosEm` junto.
 - Botão com `url: null` aparece inativo; ao preencher a URL, vira link ativo sozinho.
 - **Toalhas:** link e preço (R$ 218,35) já estão no `itens.json`; o botão "Presentear via Pix" aparece nesse item.

@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import jsQR from 'jsqr';
+import { composicaoPix, valorPix } from '../js/catalogo.js';
 import { brCodeDoCasal, crc16, montarBrCode } from '../js/pix.js';
 import qrcode from '../js/vendor/qrcode.mjs';
 
@@ -62,5 +63,42 @@ test('o QR Code gerado decodifica de volta para o mesmo BR Code', () => {
     const lido = jsQR(pixels, lado, lado);
     assert.ok(lido, 'QR não foi lido');
     assert.equal(lido.data, codigo);
+  }
+});
+
+test('Pix do item soma o frete ao preço no Pix', () => {
+  // Mesa com cadeiras (seção 13): R$ 684,50 + R$ 155,89 de frete.
+  const mesa = { precos: [{ valor: 769.02, precoPix: 684.5, frete: 155.89 }] };
+  assert.deepEqual(composicaoPix(mesa), { preco: 684.5, frete: 155.89, total: 840.39 });
+  assert.equal(valorPix(mesa), 840.39);
+  // Sem precoPix, a soma usa o "valor" (Cômoda: R$ 269,98 + R$ 136,49).
+  assert.equal(valorPix({ precos: [{ valor: 269.98, frete: 136.49 }] }), 406.47);
+  assert.match(brCodeDoCasal(valorPix(mesa)), /5406840\.39/);
+});
+
+test('frete 0 (grátis) não muda o valor', () => {
+  const jantar = { precos: [{ valor: 424.9, precoPix: 398.05, frete: 0 }] };
+  assert.deepEqual(composicaoPix(jantar), { preco: 398.05, frete: 0, total: 398.05 });
+});
+
+test('item sem frete levantado sai só com o preço; sem preço, sem Pix', () => {
+  const copos = { precos: [{ valor: 37.89 }] };
+  assert.deepEqual(composicaoPix(copos), { preco: 37.89, frete: null, total: 37.89 });
+  // Duas opções: cada uma com o seu preço (Conjunto de sobremesa).
+  const sobremesa = { precos: [{ valor: 95.75 }, { valor: 55.9 }] };
+  assert.equal(valorPix(sobremesa, 1), 55.9);
+  assert.equal(valorPix({ precos: [null] }), null);
+});
+
+test('o catálogo tem frete válido e nenhum total com mais de 2 casas', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const catalogo = JSON.parse(await readFile(new URL('../dados/itens.json', import.meta.url), 'utf8'));
+  assert.equal(catalogo.cepFrete, '29041320');
+  for (const item of catalogo.secoes.flatMap((s) => s.itens)) {
+    item.precos.forEach((preco, i) => {
+      if (preco?.frete != null) assert.ok(preco.frete >= 0, `${item.id}: frete negativo`);
+      const total = valorPix(item, i);
+      if (total != null) assert.equal(total, Math.round(total * 100) / 100, `${item.id}: ${total}`);
+    });
   }
 });

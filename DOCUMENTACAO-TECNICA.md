@@ -1,6 +1,6 @@
 # Documentação técnica: Chá de casa nova Heitor e Ana
 
-Última atualização: 23/10/2026.
+Última atualização: 24/10/2026.
 
 Este documento tem dois públicos:
 
@@ -166,7 +166,7 @@ npm ci
 Verificação:
 
 ```powershell
-npm run teste:pix   # esperado: tests 5, pass 5, fail 0
+npm run teste:pix   # esperado: tests 9, pass 9, fail 0
 ```
 
 ### 1.4 Login no Firebase **[USUÁRIO]**
@@ -196,7 +196,7 @@ As portas 4000, 4400, 4500, 5000, 8080 e 9099 precisam estar livres. Se os emula
 npm test
 ```
 
-Esperado: `teste:pix` com 5 testes aprovados e `teste:regras` com 30 testes aprovados. O `teste:regras` sobe o emulador do Firestore sozinho, roda e desliga. **Ele apaga os dados do emulador** (`clearFirestore`); não rode `node --test testes/regras.test.mjs` direto contra emuladores com dados que você quer manter.
+Esperado: `teste:pix` com 9 testes aprovados e `teste:regras` com 32 testes aprovados. O `teste:regras` sobe o emulador do Firestore sozinho, roda e desliga. **Ele apaga os dados do emulador** (`clearFirestore`); não rode `node --test testes/regras.test.mjs` direto contra emuladores com dados que você quer manter.
 
 Se aparecer erro de Java: confira `java -version` (precisa ser 21+).
 
@@ -230,8 +230,8 @@ O projeto não tem `.claude/`, `CLAUDE.md`, servidores MCP nem hooks próprios.
 - [ ] `git status -sb` mostra `## main` sem erro.
 - [ ] `node -v` ≥ 20, `java -version` 21, `firebase --version` 15.x.
 - [ ] `npm ci` sem erros.
-- [ ] `npm test`: 5 + 30 testes aprovados.
-- [ ] `npm run emuladores` abre o site em http://127.0.0.1:5000 com as 3 seções e 35 itens.
+- [ ] `npm test`: 9 + 32 testes aprovados.
+- [ ] `npm run emuladores` abre o site em http://127.0.0.1:5000 com as 3 seções e 36 itens.
 - [ ] (Para publicar) `firebase login:list` mostra htkarater10@gmail.com.
 
 ---
@@ -248,7 +248,7 @@ Site de lista de presentes de chá de casa nova, em **uma página pública** (`i
 - **Publicado em:** https://lista-heitor-ana.web.app (primeira publicação em 23/10/2026).
 
 Funcionalidades:
-- Lista de 35 itens em 3 seções, com foto, nota e botões para as lojas.
+- Lista de 36 itens em 3 seções, com foto, nota e botões para as lojas.
 - Visitante marca "Já comprei este presente" (nome obrigatório, mensagem opcional): o item fica "Já presenteado" para todos, em tempo real.
 - "Presentear via Pix": QR Code e "copia e cola" com o valor do item; ao confirmar "Enviei o Pix", o item é marcado.
 - "Pixinho solidário": Pix sem valor fixo.
@@ -285,8 +285,8 @@ lista-presentes/lista-presentes/
 ├── .firebaserc              projeto padrão: lista-heitor-ana
 ├── package.json / -lock     scripts e dependências de desenvolvimento
 ├── scripts/converter-webp.mjs  PNG → WebP com sharp
-├── testes/pix.test.mjs      5 testes do BR Code
-├── testes/regras.test.mjs   30 testes das regras do Firestore
+├── testes/pix.test.mjs      9 testes do BR Code e da soma do frete
+├── testes/regras.test.mjs   32 testes das regras do Firestore
 ├── referencia/modelo.pdf    PDF original da lista (referência visual e de conteúdo; fora do Git)
 ├── README.md, ESPECIFICACAO.md, DOCUMENTACAO-TECNICA.md
 ├── .gitignore               node_modules, .firebase, referencia, logs, dados do emulador
@@ -366,7 +366,7 @@ Estrutura:
           "variacao": "Bege",         // opcional: "Na loja, escolha a opção ..."
           "fotos": ["assets/produtos/box-bau.webp"],
           "botoes": [{ "rotulo": "Opção 1", "url": "https://..." }],   // url null = botão inativo
-          "precos": [{ "valor": 999.90, "precoPix": 949.90 }],         // um por botão, mesma ordem; null = sem preço
+          "precos": [{ "valor": 999.90, "precoPix": 949.90, "frete": 25.90 }], // um por botão, mesma ordem; null = sem preço; frete 0 = grátis, ausente = não levantado
           "adicionadoEm": "2026-10-23",   // opcional, informativo
           "alteradoDoPdf": "..."          // opcional, informativo
         }
@@ -376,10 +376,10 @@ Estrutura:
 }
 ```
 
-Hoje: Casa & Móveis 13, Cozinha & Mesa 13, Eletroportáteis 9 (35 itens, 36 links).
+Hoje: Casa & Móveis 14, Cozinha & Mesa 13, Eletroportáteis 9 (36 itens, 37 links).
 
 Regras:
-- Valor do Pix do item = `precoPix` se existir, senão `valor` (`valorPix` em `catalogo.js`). Item sem nenhum preço não mostra "Presentear via Pix".
+- Valor do Pix do item = (`precoPix` se existir, senão `valor`) + `frete` (`composicaoPix` e `valorPix` em `catalogo.js`; o total é arredondado para centavos). `frete` ausente soma 0. Item sem nenhum preço não mostra "Presentear via Pix". Na raiz: `freteLevantadoEm` e `cepFrete`.
 - Em item com dois botões, a pessoa escolhe a opção; `compras.opcao` grava o índice (0 ou 1).
 - **Nunca mude o `id` de um item já marcado**: o status no Firestore é ligado ao id, e o item perderia a marcação.
 - Ao atualizar preços, atualize também `precosLevantadosEm`.
@@ -416,8 +416,8 @@ Para trocar o e-mail do casal: altere `ehCasal()` em `firestore.rules`, `EMAIL_C
 | Comando | O que faz |
 |---|---|
 | `npm test` | `teste:pix` e depois `teste:regras` |
-| `npm run teste:pix` | 5 testes (`node --test`): CRC16, exemplo do Banco Central, Pix com valor, Pixinho sem valor, QR lido de volta com jsQR |
-| `npm run teste:regras` | `firebase emulators:exec --only firestore` + 30 testes: privacidade (visitante e não logado não leem compras, mensagens, pixinhos), marcar/desfazer, casal lê e apaga tudo, item não pode ser remarcado, validação de campos, conta com e-mail do casal sem verificação ou sem Google não lê |
+| `npm run teste:pix` | 9 testes (`node --test`): CRC16, exemplo do Banco Central, Pix com valor, Pixinho sem valor, QR lido de volta com jsQR, soma do frete, frete 0, item sem frete, frete válido no `itens.json` |
+| `npm run teste:regras` | `firebase emulators:exec --only firestore` + 32 testes: privacidade (visitante e não logado não leem compras, mensagens, pixinhos), marcar/desfazer, casal lê e apaga tudo, item não pode ser remarcado, validação de campos, conta com e-mail do casal sem verificação ou sem Google não lê |
 
 Todos rodam no projeto `demo-cha-casa-nova`, só no emulador.
 

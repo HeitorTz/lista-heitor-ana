@@ -12,7 +12,7 @@ import {
   serverTimestamp,
   writeBatch,
 } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js';
-import { aceitaPix, carregarCatalogo, el, formatarReais, temDuasOpcoes, valorPix } from './catalogo.js';
+import { aceitaPix, carregarCatalogo, composicaoPix, el, formatarReais, temDuasOpcoes, valorPix } from './catalogo.js';
 import { iniciarFirebase } from './firebase.js';
 import { brCodeDoCasal, PIX } from './pix.js';
 import qrcode from './vendor/qrcode.mjs';
@@ -90,15 +90,25 @@ async function copiar(texto, botao) {
   }, 1800);
 }
 
-// Bloco com valor, QR Code, chave e "copia e cola".
-function blocoPix(valor) {
+// Linha do valor: "R$ 684,50 + R$ 155,89 de frete = R$ 840,39", "R$ 398,05 · frete grátis"
+// ou, sem frete levantado, só "Valor: R$ 37,89".
+function linhaValor({ preco, frete, total }) {
+  const forte = el('strong', {}, formatarReais(total));
+  if (frete == null) return el('p', { class: 'valor-pix' }, 'Valor: ', forte);
+  if (frete === 0) return el('p', { class: 'valor-pix' }, forte, ' · frete grátis');
+  return el('p', { class: 'valor-pix' }, `${formatarReais(preco)} + ${formatarReais(frete)} de frete = `, forte);
+}
+
+// Bloco com valor, QR Code, chave e "copia e cola". Sem composição = Pixinho, sem valor.
+function blocoPix(composicao) {
+  const valor = composicao?.total ?? null;
   const codigo = brCodeDoCasal(valor);
   const botaoChave = el('button', { type: 'button', class: 'botao botao-pequeno' }, 'Copiar');
   botaoChave.addEventListener('click', () => copiar(PIX.chave, botaoChave));
   const botaoCodigo = el('button', { type: 'button', class: 'botao botao-contorno botao-largo' }, 'Copiar código Pix (copia e cola)');
   botaoCodigo.addEventListener('click', () => copiar(codigo, botaoCodigo));
   return el('div', { class: 'bloco-pix' },
-    valor != null ? el('p', { class: 'valor-pix' }, 'Valor: ', el('strong', {}, formatarReais(valor))) : null,
+    composicao ? linhaValor(composicao) : null,
     svgDoQr(codigo),
     el('div', { class: 'linha-chave' },
       el('div', {},
@@ -236,8 +246,8 @@ function abrirDialogoCompra(item, forma) {
   const areaPix = el('div', { class: 'area-pix' });
 
   const mostrarPix = (opcao) => {
-    const valor = valorPix(item, opcao);
-    areaPix.replaceChildren(valor != null ? blocoPix(valor) : el('p', { class: 'ajuda' }, 'Esta opção ainda não tem valor definido.'));
+    const composicao = composicaoPix(item, opcao);
+    areaPix.replaceChildren(composicao ? blocoPix(composicao) : el('p', { class: 'ajuda' }, 'Esta opção ainda não tem valor definido.'));
   };
 
   const opcoes = duas
