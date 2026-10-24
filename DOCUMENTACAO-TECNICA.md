@@ -20,7 +20,13 @@ Documentos relacionados, na mesma pasta:
 
 ### 1.1 Como o projeto chega à máquina nova
 
-O projeto fica numa pasta do OneDrive (conta corporativa "OneDrive - Tomazeli") e é um repositório **Git local** (seção 1.1.1). Não há repositório remoto: o OneDrive é o que leva o projeto, inclusive a pasta `.git`, para a outra máquina.
+O projeto fica numa pasta do OneDrive (conta corporativa "OneDrive - Tomazeli") e é um repositório **Git** com remoto público no GitHub: https://github.com/HeitorTz/lista-heitor-ana (seção 1.1.1). O OneDrive leva o projeto, inclusive a pasta `.git`, para a outra máquina; o GitHub é o backup e a forma de obter o código sem o OneDrive.
+
+Sem o OneDrive, clone o repositório (o PDF modelo `referencia/modelo.pdf` não vem, porque não está no Git):
+
+```powershell
+git clone https://github.com/HeitorTz/lista-heitor-ana.git
+```
 
 ```
 C:\Users\Heitor\OneDrive - Tomazeli\Documentos\1- Projetos\15 - Lista de presente\
@@ -45,7 +51,8 @@ Test-Path package.json, firebase.json, firestore.rules, dados\itens.json, js\app
 |---|---|
 | Raiz do repositório | a raiz do projeto (`lista-presentes\lista-presentes\`) |
 | Branch | `main` |
-| Remoto | nenhum (só local) |
+| Remoto | `origin` → https://github.com/HeitorTz/lista-heitor-ana (**público**; `main` acompanha `origin/main`) |
+| Conta GitHub | `HeitorTz`, logada no GitHub CLI (`gh`), que também autentica o `git push` |
 | Autor | `Heitor Tomazeli <heitor.tomazeli@hotmail.com>`, definido no `.git/config` do repositório (não há `~/.gitconfig` global) |
 | Primeiro commit | `42dc79b` "Lista de presentes do Chá de casa nova Heitor e Ana" |
 
@@ -53,18 +60,31 @@ O `.gitignore` deixa fora do Git: `node_modules/`, `config.local.json`, `.emulad
 
 Como a identidade do autor fica no `.git/config` e ele vem pelo OneDrive, não é preciso configurar `user.name`/`user.email` na máquina nova.
 
+**[USUÁRIO]** O login do GitHub fica no perfil do Windows e precisa ser feito em cada máquina, num terminal do usuário (abre o navegador): `gh auth login` → GitHub.com → HTTPS → Yes (autenticar o Git) → Login with a web browser.
+
 Verificação:
 
 ```powershell
-git status -sb        # "## main", sem erro
+git status -sb        # "## main...origin/main", sem erro
 git log --oneline -3  # mostra o histórico, incluindo 42dc79b
 git config user.email # heitor.tomazeli@hotmail.com
+git remote -v         # origin https://github.com/HeitorTz/lista-heitor-ana.git
+gh auth status        # Logged in to github.com account HeitorTz
 ```
 
+Para guardar uma mudança no GitHub (separado da publicação do site, seção 7.1):
+
+```powershell
+git add -A
+git commit -m "descrição da mudança"
+git push
+```
+
+Como o repositório é **público**, não versione dados pessoais nem segredos. Antes de um commit, confira `git status`; arquivos que não devem ir para o GitHub entram no `.gitignore`.
+
 Cuidados por causa do OneDrive:
-- **Não trabalhe nas duas máquinas ao mesmo tempo.** Antes de mexer na máquina nova, espere o OneDrive terminar de sincronizar (ícone verde); antes de trocar de máquina de novo, faça commit e espere sincronizar. Duas máquinas gravando na pasta `.git` ao mesmo tempo podem gerar arquivos "conflito" do OneDrive e corromper o repositório.
-- Se `git status` reclamar de objeto corrompido ou aparecerem arquivos como `index-NOMEDAMAQUINA` dentro de `.git`, pare e avise o usuário antes de qualquer correção.
-- Se um dia quiser backup fora do OneDrive, crie um repositório privado (GitHub ou outro) e adicione como remoto. Hoje isso não existe.
+- **Não trabalhe nas duas máquinas ao mesmo tempo.** Antes de mexer na máquina nova, espere o OneDrive terminar de sincronizar (ícone verde); antes de trocar de máquina de novo, faça commit, `git push` e espere sincronizar. Duas máquinas gravando na pasta `.git` ao mesmo tempo podem gerar arquivos "conflito" do OneDrive e corromper o repositório.
+- Se `git status` reclamar de objeto corrompido ou aparecerem arquivos como `index-NOMEDAMAQUINA` dentro de `.git`, pare e avise o usuário antes de qualquer correção. O GitHub guarda uma cópia íntegra do que foi enviado com `git push`.
 
 ### 1.2 Programas necessários
 
@@ -76,6 +96,7 @@ Versões da máquina original (Windows 11 Home, x64):
 | Java (Eclipse Temurin JDK) | 21.0.12 | 21 | exigido pelo emulador do Firestore |
 | Firebase CLI (`firebase-tools`) | 15.34.1 | 15 | emuladores e publicação |
 | Git for Windows | 2.55.0 | qualquer | controle de versão do projeto |
+| GitHub CLI (`gh`) | 2.103.2 | qualquer | login no GitHub e `git push` |
 | Visual Studio Code | 1.143.1 | qualquer | editor |
 | Extensão Claude Code (VS Code) | `anthropic.claude-code` 2.1.309 | qualquer | agente |
 
@@ -85,6 +106,7 @@ Instalação pelo `winget` (PowerShell; o Windows pode pedir confirmação de ad
 winget install --id OpenJS.NodeJS.LTS -e --accept-source-agreements --accept-package-agreements
 winget install --id EclipseAdoptium.Temurin.21.JDK -e --accept-source-agreements --accept-package-agreements
 winget install --id Git.Git -e --accept-source-agreements --accept-package-agreements
+winget install --id GitHub.cli -e --accept-source-agreements --accept-package-agreements
 winget install --id Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
 ```
 
@@ -268,7 +290,7 @@ lista-presentes/lista-presentes/
 ├── referencia/modelo.pdf    PDF original da lista (referência visual e de conteúdo; fora do Git)
 ├── README.md, ESPECIFICACAO.md, DOCUMENTACAO-TECNICA.md
 ├── .gitignore               node_modules, .firebase, referencia, logs, dados do emulador
-├── .git/                    repositório Git local (branch main, sem remoto)
+├── .git/                    repositório Git (branch main, remoto origin no GitHub)
 ├── .firebase/               cache do deploy do Hosting (gerado; pode apagar)
 └── firestore-debug.log      log do emulador (gerado; ignorado)
 ```
@@ -423,8 +445,10 @@ Mudanças no console do Firebase (provedores de login, domínios autorizados) s�
 ```powershell
 npm test
 firebase deploy --only firestore:rules,hosting
+git add -A; git commit -m "descrição da mudança"; git push   # guarda a mesma versão no GitHub
 ```
 
+- Publicar o site e enviar ao GitHub são passos separados: o `firebase deploy` publica a pasta local, com ou sem commit.
 - O Hosting publica a pasta do projeto (`"public": "."`) **menos** o que está em `ignore` no `firebase.json`: configs, `package*.json`, documentos `.md`, arquivos ocultos, `node_modules`, `referencia/`, `scripts/`, `testes/`, PNGs de `assets/` e logs. **Arquivo novo que não deve ir ao ar precisa entrar nessa lista.**
 - O emulador do Hosting serve todos os arquivos, inclusive os ignorados; confira o que foi publicado no site real.
 - Cabeçalhos: `dados/itens.json` com `no-cache`; `assets/**/*.webp` com cache de 7 dias (foto trocada com o mesmo nome pode demorar a atualizar no celular de quem já visitou; prefira um nome novo).
@@ -465,5 +489,8 @@ Atualizar o SDK do Firebase: troque `12.19.0` nas URLs de `js/firebase.js`, `js/
 | Login Google bloqueado | pop-up bloqueado pelo navegador | liberar pop-ups para o site |
 | Casal entra mas vê "não autorizado" | conta Google errada | sair e entrar com heitor.tomazeli@gmail.com |
 | `firebase deploy` pede login ou dá 403 | CLI sem login ou com outra conta | `firebase login` / `firebase login:list` com htkarater10@gmail.com |
+| `gh` não encontrado logo após instalar | PATH da sessão desatualizado | recarregar o PATH (seção 1.2) ou usar `& "C:\Program Files\GitHub CLI\gh.exe"` |
+| `git push` pede login ou dá 403 | GitHub CLI sem login nesta máquina | usuário roda `gh auth login`; conferir com `gh auth status` (conta HeitorTz) |
+| Saída do `git push` aparece em vermelho no PowerShell | o Git escreve o progresso no stderr | não é erro; conferir com `git status -sb` (sem "ahead") |
 
 Pendência aberta na especificação: P3 (endereço de entrega).
