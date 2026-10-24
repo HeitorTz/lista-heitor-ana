@@ -68,14 +68,14 @@ Ordem no site (D18: Eletroportáteis por último, diferente do PDF):
 | Cozinha & Mesa | Para as receitas e os encontros | 13 |
 | Eletroportáteis | Praticidade para o dia a dia | 9 |
 
-Total: **35 itens, 38 links**. Lista completa em `dados/itens.json`. A ordem das seções no site é a ordem do `itens.json`.
+Total: **35 itens, 37 links**. Lista completa em `dados/itens.json`. A ordem das seções no site é a ordem do `itens.json`.
 
 Itens com particularidades:
 
 | Item | Particularidade |
 |---|---|
 | Box baú para cama | Duas opções (Shopee e Casas Bahia) |
-| Filtro de água | Duas opções (Amazon) |
+| Filtro de água | **Alterado:** agora tem só uma opção (a antiga Opção 2), botão "Ver na Amazon" |
 | Aparelho de jantar 30 peças | **Alterado:** agora tem só uma opção (Porto Brasil linha Roma, novo link), foto da antiga Opção 2, botão "Ver no Mercado Livre" |
 | Conjunto de sobremesa | Duas opções, "precisamos de apenas um" |
 | Toalhas de banho e rosto | "Modelo à sua escolha", duas fotos. **Alterado:** deixou de ser escolha livre; agora é o jogo Buddemeyer 4 peças no Mercado Livre, botão "Ver no Mercado Livre" (verde cheio, como os demais), R$ 218,35 |
@@ -83,8 +83,9 @@ Itens com particularidades:
 | Mixer 5 em 1 | Link substituído pelo link do produto (P6) |
 | Conjunto de formas | O card avisa: "Na loja, escolha a opção **Kit 12 Formas**" (D17) |
 | Cabeceira de cama | Cor pré-definida: o card avisa "Na loja, escolha a opção **Bege**" (D27) |
+| Guarda-roupa 4 portas | Cor pré-definida: o card avisa "Na loja, escolha a opção **Branco Riviera**" |
 
-**Regra para itens com duas opções:** todos (Box baú, Filtro, Sobremesa) são **um único presente**. Marcar qualquer opção marca o item inteiro.
+**Regra para itens com duas opções:** todos (Box baú, Sobremesa) são **um único presente**. Marcar qualquer opção marca o item inteiro.
 
 ### 2.6 Itens novos (não estão no PDF)
 Depois das três seções, nesta ordem:
@@ -214,7 +215,7 @@ Valores no campo `precos` do `itens.json`. Em **negrito**, o valor usado no Pix 
 | Mesa com cadeiras (Espanha Yescasa, novo link) | **R$ 682,50 no Pix** (R$ 769,02 em outros meios) |
 | Televisão (Samsung 50" Mini LED 4K M75H, Fast Shop) | **R$ 2.569,00 no Pix** (R$ 2.732,98 em outros meios) |
 | Armário de cozinha (Completa 293 cm Rustic Emilly Madesa) | **R$ 840,44 no Pix** (R$ 940,69 em outros meios) |
-| Filtro de água | Opção 1: **R$ 484,40**<br>Opção 2: **R$ 483,92** |
+| Filtro de água | **R$ 483,92** |
 | Ventilador de coluna com controle | **R$ 238,99** |
 | Toalhas de banho e rosto | **R$ 218,35** (Mercado Livre não mostra preço diferente no Pix) |
 | **Cozinha & Mesa** | |
@@ -298,7 +299,7 @@ Conferidos em 23/10/2026 no Firebase Emulator Suite, com testes automatizados (3
 
 - [x] Título da página: "Chá de casa nova Heitor e Ana".
 - [x] Página única com banner, textos, "Como participar?", agradecimento e assinatura idênticos ao PDF.
-- [x] As 3 seções com os 35 itens, fotos e os 38 links do `itens.json` (reconferido após as mudanças da seção 11, incluindo o Pix das toalhas com R$ 218,35).
+- [x] As 3 seções com os 35 itens, fotos e os 37 links do `itens.json` (reconferido após as mudanças da seção 11, incluindo o Pix das toalhas com R$ 218,35).
 - [x] Cores e fontes da seção 4; layout funcional no celular.
 - [x] Marcar presente exige nome; o item passa a "Já presenteado" para todos.
 - [x] Quem marcou consegue desmarcar no mesmo aparelho; o casal desmarca qualquer item.
@@ -340,3 +341,8 @@ Fotos novas em `assets/produtos/` (PNG original + WebP de 600 px): `guarda-roupa
 
 Item removido (depois):
 - **Armário para escritório**, retirado da lista a pedido do casal. Fotos mantidas em `assets/produtos/` (`armario-escritorio`), mas fora do `itens.json`. Total atual: **35 itens, 38 links** (Casa & Móveis 13, Cozinha & Mesa 13, Eletroportáteis 9).
+
+## 12. Mudanças de 24/10/2026
+
+- **Filtro de água:** retirada a Opção 1 (R$ 484,40). Ficou só a antiga Opção 2 (R$ 483,92), com o botão "Ver na Amazon" e sem a nota "Amazon · duas opções", como os demais itens de uma opção. Total atual: **35 itens, 37 links**.
+- **Guarda-roupa 4 portas:** cor pré-definida **Branco Riviera** (campo `variacao`, mesmo aviso da Cabeceira: "Na loja, escolha a opção Branco Riviera"). Link igual; foto trocada pela da cor Riviera (`guarda-roupa-4-portas`, PNG + WebP).

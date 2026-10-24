@@ -42,6 +42,7 @@
               "precoPix": 413.91
             }
           ],
+          "variacao": "Branco Riviera",
           "adicionadoEm": "2026-10-23"
         },
         {
@@ -188,24 +189,16 @@
         {
           "id": "filtro-agua",
           "nome": "Filtro de água",
-          "nota": "Amazon · duas opções",
           "fotos": [
             "assets/produtos/filtro-agua.webp"
           ],
           "botoes": [
             {
-              "rotulo": "Opção 1",
-              "url": "https://a.co/d/0iLm9mke"
-            },
-            {
-              "rotulo": "Opção 2",
+              "rotulo": "Ver na Amazon",
               "url": "https://a.co/d/0hX4YeMs"
             }
           ],
           "precos": [
-            {
-              "valor": 484.4
-            },
             {
               "valor": 483.92
             }
