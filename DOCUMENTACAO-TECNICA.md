@@ -376,7 +376,7 @@ Estrutura:
 }
 ```
 
-Hoje: Casa & Móveis 13, Cozinha & Mesa 13, Eletroportáteis 9 (35 itens, 37 links).
+Hoje: Casa & Móveis 13, Cozinha & Mesa 13, Eletroportáteis 9 (35 itens, 36 links).
 
 Regras:
 - Valor do Pix do item = `precoPix` se existir, senão `valor` (`valorPix` em `catalogo.js`). Item sem nenhum preço não mostra "Presentear via Pix".

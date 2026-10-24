@@ -68,13 +68,13 @@ Ordem no site (D18: Eletroportáteis por último, diferente do PDF):
 | Cozinha & Mesa | Para as receitas e os encontros | 13 |
 | Eletroportáteis | Praticidade para o dia a dia | 9 |
 
-Total: **35 itens, 37 links**. Lista completa em `dados/itens.json`. A ordem das seções no site é a ordem do `itens.json`.
+Total: **35 itens, 36 links**. Lista completa em `dados/itens.json`. A ordem das seções no site é a ordem do `itens.json`.
 
 Itens com particularidades:
 
 | Item | Particularidade |
 |---|---|
-| Box baú para cama | Duas opções (Shopee e Casas Bahia) |
+| Box baú para cama | **Alterado:** agora tem só uma opção (a antiga Opção 1, Shopee), botão "Ver na Shopee" |
 | Filtro de água | **Alterado:** agora tem só uma opção (a antiga Opção 2), botão "Ver na Amazon" |
 | Aparelho de jantar 30 peças | **Alterado:** agora tem só uma opção (Porto Brasil linha Roma, novo link), foto da antiga Opção 2, botão "Ver no Mercado Livre" |
 | Conjunto de sobremesa | Duas opções, "precisamos de apenas um" |
@@ -85,7 +85,7 @@ Itens com particularidades:
 | Cabeceira de cama | Cor pré-definida: o card avisa "Na loja, escolha a opção **Bege**" (D27) |
 | Guarda-roupa 4 portas | Cor pré-definida: o card avisa "Na loja, escolha a opção **Branco Riviera**" |
 
-**Regra para itens com duas opções:** todos (Box baú, Sobremesa) são **um único presente**. Marcar qualquer opção marca o item inteiro.
+**Regra para itens com duas opções:** o Conjunto de sobremesa é **um único presente**. Marcar qualquer opção marca o item inteiro.
 
 ### 2.6 Itens novos (não estão no PDF)
 Depois das três seções, nesta ordem:
@@ -209,7 +209,7 @@ Valores no campo `precos` do `itens.json`. Em **negrito**, o valor usado no Pix 
 | Guarda-roupa | **R$ 1.117,96** |
 | Guarda-roupa 4 portas (Ditália DM-580, Shopee) | **R$ 413,91 no Pix** (R$ 459,90 em outros meios) |
 | Cômoda | **R$ 269,98** |
-| Box baú para cama | Opção 1: **R$ 608,88 no Pix** (R$ 689,00 em outros meios)<br>Opção 2: **R$ 446,11 no Pix** (R$ 484,90 em outros meios) |
+| Box baú para cama | **R$ 608,88 no Pix** (R$ 689,00 em outros meios) |
 | Cabeceira de cama | **R$ 236,70 no Pix** (R$ 262,99 em outros meios) |
 | Sofá | **R$ 1.299,90** |
 | Mesa com cadeiras (Espanha Yescasa, novo link) | **R$ 682,50 no Pix** (R$ 769,02 em outros meios) |
@@ -299,7 +299,7 @@ Conferidos em 23/10/2026 no Firebase Emulator Suite, com testes automatizados (3
 
 - [x] Título da página: "Chá de casa nova Heitor e Ana".
 - [x] Página única com banner, textos, "Como participar?", agradecimento e assinatura idênticos ao PDF.
-- [x] As 3 seções com os 35 itens, fotos e os 37 links do `itens.json` (reconferido após as mudanças da seção 11, incluindo o Pix das toalhas com R$ 218,35).
+- [x] As 3 seções com os 35 itens, fotos e os 36 links do `itens.json` (reconferido após as mudanças da seção 11, incluindo o Pix das toalhas com R$ 218,35).
 - [x] Cores e fontes da seção 4; layout funcional no celular.
 - [x] Marcar presente exige nome; o item passa a "Já presenteado" para todos.
 - [x] Quem marcou consegue desmarcar no mesmo aparelho; o casal desmarca qualquer item.
@@ -346,3 +346,4 @@ Item removido (depois):
 
 - **Filtro de água:** retirada a Opção 1 (R$ 484,40). Ficou só a antiga Opção 2 (R$ 483,92), com o botão "Ver na Amazon" e sem a nota "Amazon · duas opções", como os demais itens de uma opção. Total atual: **35 itens, 37 links**.
 - **Guarda-roupa 4 portas:** cor pré-definida **Branco Riviera** (campo `variacao`, mesmo aviso da Cabeceira: "Na loja, escolha a opção Branco Riviera"). Link igual; foto trocada pela da cor Riviera (`guarda-roupa-4-portas`, PNG + WebP).
+- **Box baú para cama:** retirada a Opção 2 (Casas Bahia, R$ 446,11 no Pix). Ficou só a antiga Opção 1 (Shopee, R$ 608,88 no Pix, R$ 689,00 em outros meios), com o botão "Ver na Shopee" e sem a nota "Shopee ou Casas Bahia · duas opções". Total atual: **35 itens, 36 links**.

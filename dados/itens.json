@@ -66,28 +66,19 @@
         {
           "id": "box-bau",
           "nome": "Box baú para cama",
-          "nota": "Shopee ou Casas Bahia · duas opções",
           "fotos": [
             "assets/produtos/box-bau.webp"
           ],
           "botoes": [
             {
-              "rotulo": "Opção 1",
+              "rotulo": "Ver na Shopee",
               "url": "https://br.shp.ee/ZSrJ7sUq"
-            },
-            {
-              "rotulo": "Opção 2",
-              "url": "https://www.casasbahia.com.br/cama-box-bau-casal-suede-sereneprime-bege-138x188x44/p/1561679154"
             }
           ],
           "precos": [
             {
               "valor": 689.0,
               "precoPix": 608.88
-            },
-            {
-              "valor": 484.9,
-              "precoPix": 446.11
             }
           ]
         },
