@@ -20,7 +20,7 @@ Documentos relacionados, na mesma pasta:
 
 ### 1.1 Como o projeto chega à máquina nova
 
-O projeto **não está em Git**. Ele fica numa pasta do OneDrive (conta corporativa "OneDrive - Tomazeli"):
+O projeto fica numa pasta do OneDrive (conta corporativa "OneDrive - Tomazeli") e é um repositório **Git local** (seção 1.1.1). Não há repositório remoto: o OneDrive é o que leva o projeto, inclusive a pasta `.git`, para a outra máquina.
 
 ```
 C:\Users\Heitor\OneDrive - Tomazeli\Documentos\1- Projetos\15 - Lista de presente\
@@ -35,9 +35,36 @@ Na máquina nova, entre com a mesma conta no OneDrive e espere a pasta sincroniz
 Verificação (PowerShell, na raiz do projeto):
 
 ```powershell
-Test-Path package.json, firebase.json, firestore.rules, dados\itens.json, js\app.js
+Test-Path package.json, firebase.json, firestore.rules, dados\itens.json, js\app.js, .git
 # Esperado: True em todas as linhas
 ```
+
+#### 1.1.1 Git
+
+| Item | Valor |
+|---|---|
+| Raiz do repositório | a raiz do projeto (`lista-presentes\lista-presentes\`) |
+| Branch | `main` |
+| Remoto | nenhum (só local) |
+| Autor | `Heitor Tomazeli <heitor.tomazeli@hotmail.com>`, definido no `.git/config` do repositório (não há `~/.gitconfig` global) |
+| Primeiro commit | `42dc79b` "Lista de presentes do Chá de casa nova Heitor e Ana" |
+
+O `.gitignore` deixa fora do Git: `node_modules/`, `config.local.json`, `.emulador-dados/`, `*-debug.log`, `.firebase/` e `referencia/`. Ou seja, o **PDF modelo (`referencia/modelo.pdf`) existe só no OneDrive**, não no histórico do Git. As fotos `.png` originais e os `.webp` estão versionados.
+
+Como a identidade do autor fica no `.git/config` e ele vem pelo OneDrive, não é preciso configurar `user.name`/`user.email` na máquina nova.
+
+Verificação:
+
+```powershell
+git status -sb        # "## main", sem erro
+git log --oneline -3  # mostra o histórico, incluindo 42dc79b
+git config user.email # heitor.tomazeli@hotmail.com
+```
+
+Cuidados por causa do OneDrive:
+- **Não trabalhe nas duas máquinas ao mesmo tempo.** Antes de mexer na máquina nova, espere o OneDrive terminar de sincronizar (ícone verde); antes de trocar de máquina de novo, faça commit e espere sincronizar. Duas máquinas gravando na pasta `.git` ao mesmo tempo podem gerar arquivos "conflito" do OneDrive e corromper o repositório.
+- Se `git status` reclamar de objeto corrompido ou aparecerem arquivos como `index-NOMEDAMAQUINA` dentro de `.git`, pare e avise o usuário antes de qualquer correção.
+- Se um dia quiser backup fora do OneDrive, crie um repositório privado (GitHub ou outro) e adicione como remoto. Hoje isso não existe.
 
 ### 1.2 Programas necessários
 
@@ -48,7 +75,7 @@ Versões da máquina original (Windows 11 Home, x64):
 | Node.js LTS | 24.22.1 (npm 11.19.1) | 20 | testes, scripts, Firebase CLI |
 | Java (Eclipse Temurin JDK) | 21.0.12 | 21 | exigido pelo emulador do Firestore |
 | Firebase CLI (`firebase-tools`) | 15.34.1 | 15 | emuladores e publicação |
-| Git | 2.55.0 | qualquer | opcional (o projeto não usa Git hoje) |
+| Git for Windows | 2.55.0 | qualquer | controle de versão do projeto |
 | Visual Studio Code | 1.143.1 | qualquer | editor |
 | Extensão Claude Code (VS Code) | `anthropic.claude-code` 2.1.309 | qualquer | agente |
 
@@ -178,6 +205,7 @@ O projeto não tem `.claude/`, `CLAUDE.md`, servidores MCP nem hooks próprios.
 ### 1.8 Checklist final
 
 - [ ] Pasta do projeto sincronizada e marcada "Sempre manter neste dispositivo".
+- [ ] `git status -sb` mostra `## main` sem erro.
 - [ ] `node -v` ≥ 20, `java -version` 21, `firebase --version` 15.x.
 - [ ] `npm ci` sem erros.
 - [ ] `npm test`: 5 + 30 testes aprovados.
@@ -237,8 +265,10 @@ lista-presentes/lista-presentes/
 ├── scripts/converter-webp.mjs  PNG → WebP com sharp
 ├── testes/pix.test.mjs      5 testes do BR Code
 ├── testes/regras.test.mjs   30 testes das regras do Firestore
-├── referencia/modelo.pdf    PDF original da lista (referência visual e de conteúdo)
+├── referencia/modelo.pdf    PDF original da lista (referência visual e de conteúdo; fora do Git)
 ├── README.md, ESPECIFICACAO.md, DOCUMENTACAO-TECNICA.md
+├── .gitignore               node_modules, .firebase, referencia, logs, dados do emulador
+├── .git/                    repositório Git local (branch main, sem remoto)
 ├── .firebase/               cache do deploy do Hosting (gerado; pode apagar)
 └── firestore-debug.log      log do emulador (gerado; ignorado)
 ```
@@ -431,6 +461,7 @@ Atualizar o SDK do Firebase: troque `12.19.0` nas URLs de `js/firebase.js`, `js/
 | Emulador do Firestore não sobe | Java ausente ou < 21 | instalar Temurin 21 |
 | `sharp` falha ao carregar | `node_modules` copiado de outra máquina pelo OneDrive | apagar `node_modules` e rodar `npm ci` |
 | Erros estranhos de arquivo/permissão no `npm` | arquivos do OneDrive só na nuvem | "Sempre manter neste dispositivo" na pasta |
+| Arquivos "-NOMEDAMAQUINA" ou erro de objeto corrompido no Git | as duas máquinas mexeram no `.git` antes de o OneDrive sincronizar | parar, não apagar nada e comparar com a outra máquina (seção 1.1.1) |
 | Login Google bloqueado | pop-up bloqueado pelo navegador | liberar pop-ups para o site |
 | Casal entra mas vê "não autorizado" | conta Google errada | sair e entrar com heitor.tomazeli@gmail.com |
 | `firebase deploy` pede login ou dá 403 | CLI sem login ou com outra conta | `firebase login` / `firebase login:list` com htkarater10@gmail.com |
