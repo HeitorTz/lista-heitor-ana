@@ -261,8 +261,8 @@ Todos os itens têm valor de Pix. No Conjunto de formas, o card avisa que o pres
 | P7 | Link das toalhas ("Escolha livre") | ✅ Recebido em 23/10/2026 e colocado no `itens.json` |
 | P8 | Preço das toalhas | ✅ R$ 218,35, levantado em 23/10/2026 |
 | P9 | Preço do Guarda-roupa 2 portas (Ditália DM-579) | ✅ R$ 225,53 no Pix (R$ 249,90 em outros meios), levantado em 24/10/2026; aplicado no `itens.json` com frete de R$ 94,56 (seção 14) |
-| P10 | Frete dos 10 links da Amazon | Pendente: sem login, a Amazon só mostra "grátis no seu primeiro pedido". Levantar com o casal logado na Amazon |
-| P11 | Frete da Cafeteira (Dolce Gusto) | Pendente: o frete só aparece no fechamento do pedido, que exige cadastro. O casal informa o valor ou o frete fica em aberto |
+| P10 | Frete dos links da Amazon | ✅ Informado pelo casal em 24/10/2026: Guarda-roupa R$ 99,90; os outros 8 links grátis. Aplicado no `itens.json` (seção 14) |
+| P11 | Frete da Cafeteira (Dolce Gusto) | ✅ Informado pelo casal em 24/10/2026: grátis. Aplicado no `itens.json` (seção 14) |
 | P12 | Box baú — Opção 2 (Casas Bahia) | ✅ Decidido (24/10/2026): opção retirada, fica só a da Shopee. A Casas Bahia informa "Entrega indisponível para sua região" para o CEP 29041-320 |
 
 ---
@@ -453,3 +453,4 @@ Resumo: 28 links com frete levantado (14 com frete grátis), 11 pendentes (10 da
 **Pendente:** P10 (frete da Amazon) e P11 (frete da Cafeteira). Quando chegarem, basta acrescentar `frete` nesses preços do `itens.json`.
 
 - Depois (pedido do casal): **Conjunto de sobremesa — Opção 2** atualizado de R$ 55,90 para **R$ 63,52** (preço da seção 13; frete ainda pendente, P10).
+- Depois (P10 e P11, fretes informados pelo casal): **Guarda-roupa** (Amazon) frete **R$ 99,90**, Pix do item **R$ 1.217,86**; frete **grátis** no Filtro de água, Ventilador, Jogo de copos, Conjunto de sobremesa (opções 1 e 2), Panela de pressão, Multiprocessador, Batedeira e Cafeteira. Agora todos os 37 links têm `frete`.
